@@ -19,9 +19,11 @@ class GithubRepoRepository {
   /// Github APIのSearch repositoriesを叩く
   ///
   /// https://docs.github.com/ja/rest/search?apiVersion=2022-11-28#search-repositories
-  Future<SearchReposResult> searchRepos() async {
+  Future<SearchReposResult> searchRepos({
+    required String searchKeywords,
+  }) async {
     final response = await dio.get(
-      'https://api.github.com/search/repositories?q=flutter',
+      'https://api.github.com/search/repositories?q=$searchKeywords',
       options: Options(
         headers: {
           'Accept': 'application/vnd.github.v3+json',
