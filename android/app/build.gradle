@@ -72,7 +72,7 @@ android {
         if (dartEnvironmentVariables.FLAVOR != 'prod') {
             applicationIdSuffix ".${dartEnvironmentVariables.FLAVOR}"
         }
-        resValue "string", "app_name", "Flutter Template" + 
+        resValue "string", "app_name", "Repo Search" + 
             (dartEnvironmentVariables.FLAVOR == 'prod' ? '' : ".${dartEnvironmentVariables.FLAVOR}")
     }
 
