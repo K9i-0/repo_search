@@ -220,6 +220,16 @@ class L10n {
     );
   }
 
+  /// `No results.\nPlease change the search keywords.`
+  String get searchResultEmpty {
+    return Intl.message(
+      'No results.\nPlease change the search keywords.',
+      name: 'searchResultEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Order`
   String get searchSettingsOrder {
     return Intl.message(

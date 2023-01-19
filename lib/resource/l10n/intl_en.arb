@@ -16,6 +16,7 @@
     "repoUpdatedAt": "Updated at {updatedAt}",
     "searchBarHint": "search keywords",
     "searchKeywordsEmpty": "Please enter search keywords",
+    "searchResultEmpty": "No results.\nPlease change the search keywords.",
     "searchSettingsOrder": "Order",
     "searchSettingsOrderAsc": "Ascending",
     "searchSettingsOrderDesc": "Descending",

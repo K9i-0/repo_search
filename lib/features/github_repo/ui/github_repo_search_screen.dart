@@ -131,8 +131,8 @@ class Content extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // 検索結果が空の場合のメッセージを表示する
     if (data.items.isEmpty) {
-      return const CommonMessageView(
-        message: 'No results.\nPlease change the search keywords.',
+      return CommonMessageView(
+        message: context.l10n.searchResultEmpty,
       );
     }
     // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する

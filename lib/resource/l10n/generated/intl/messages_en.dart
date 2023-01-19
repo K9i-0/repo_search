@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("search keywords"),
         "searchKeywordsEmpty": MessageLookupByLibrary.simpleMessage(
             "Please enter search keywords"),
+        "searchResultEmpty": MessageLookupByLibrary.simpleMessage(
+            "No results.\nPlease change the search keywords."),
         "searchSettingsOrder": MessageLookupByLibrary.simpleMessage("Order"),
         "searchSettingsOrderAsc":
             MessageLookupByLibrary.simpleMessage("Ascending"),
