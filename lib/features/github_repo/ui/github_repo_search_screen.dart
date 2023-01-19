@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
@@ -8,7 +7,9 @@ import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart
 import 'package:repo_search/features/github_repo/model/github_repo.dart';
 import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
 import 'package:repo_search/features/github_repo/ui/github_repo_detail_screen.dart';
+import 'package:repo_search/features/github_repo/ui/owner_image.dart';
 import 'package:repo_search/features/github_repo/ui/search_bar.dart';
+import 'package:repo_search/features/settings/ui/settings_screen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 
 final githubRepoListFutureProviderFamily =
@@ -34,6 +35,19 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Repo Search'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) {
+                  return const SettingsScreen();
+                },
+              ),
+            ),
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -108,13 +122,8 @@ class GithubRepoItem extends HookConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 4),
-              child: Hero(
-                tag: githubRepo,
-                child: CircleAvatar(
-                  backgroundImage: CachedNetworkImageProvider(
-                    githubRepo.ownerImageUrl,
-                  ),
-                ),
+              child: OwnerImage(
+                githubRepo: githubRepo,
               ),
             ),
             const Gap(8),

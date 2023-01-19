@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart';
 import 'package:repo_search/features/github_repo/model/github_repo.dart';
+import 'package:repo_search/features/github_repo/ui/owner_image.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 
 final watchersCountFutureProviderFamily =
@@ -40,14 +40,9 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
           children: [
             // ListViewの制約を解除する
             UnconstrainedBox(
-              child: Hero(
-                tag: githubRepo,
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: CachedNetworkImageProvider(
-                    githubRepo.ownerImageUrl,
-                  ),
-                ),
+              child: OwnerImage(
+                githubRepo: githubRepo,
+                radius: 50,
               ),
             ),
             const Gap(32),
