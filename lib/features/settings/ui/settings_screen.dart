@@ -53,7 +53,7 @@ class SettingsScreen extends HookConsumerWidget {
                 applicationIcon: SizedBox(
                   width: 100,
                   height: 100,
-                  child: Assets.images.licensePageIcon.image(),
+                  child: Assets.images.appIcon.image(),
                 ),
               );
             },

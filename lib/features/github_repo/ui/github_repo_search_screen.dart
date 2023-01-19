@@ -12,6 +12,7 @@ import 'package:repo_search/features/github_repo/ui/search_bar.dart';
 import 'package:repo_search/features/github_repo/ui/search_settings_notifier.dart';
 import 'package:repo_search/features/github_repo/ui/search_settings_sheet.dart';
 import 'package:repo_search/features/settings/ui/settings_screen.dart';
+import 'package:repo_search/resource/assets.gen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 import 'package:repo_search/widgets/common_sheet.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -27,7 +28,12 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.appTitle),
+        title: Row(
+          children: [
+            Assets.images.appIcon.image(width: 40),
+            Text(context.l10n.appTitle),
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.tune),
