@@ -20,7 +20,11 @@ GithubRepo _$GithubRepoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GithubRepo {
-  String get name => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  int get stargazersCount => throw _privateConstructorUsedError;
+  List<String> get topics => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +38,12 @@ abstract class $GithubRepoCopyWith<$Res> {
           GithubRepo value, $Res Function(GithubRepo) then) =
       _$GithubRepoCopyWithImpl<$Res, GithubRepo>;
   @useResult
-  $Res call({String name});
+  $Res call(
+      {String fullName,
+      String? description,
+      int stargazersCount,
+      List<String> topics,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -50,13 +59,33 @@ class _$GithubRepoCopyWithImpl<$Res, $Val extends GithubRepo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? fullName = null,
+    Object? description = freezed,
+    Object? stargazersCount = null,
+    Object? topics = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stargazersCount: null == stargazersCount
+          ? _value.stargazersCount
+          : stargazersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      topics: null == topics
+          ? _value.topics
+          : topics // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -69,7 +98,12 @@ abstract class _$$_GithubRepoCopyWith<$Res>
       __$$_GithubRepoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call(
+      {String fullName,
+      String? description,
+      int stargazersCount,
+      List<String> topics,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -83,13 +117,33 @@ class __$$_GithubRepoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? fullName = null,
+    Object? description = freezed,
+    Object? stargazersCount = null,
+    Object? topics = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$_GithubRepo(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stargazersCount: null == stargazersCount
+          ? _value.stargazersCount
+          : stargazersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      topics: null == topics
+          ? _value._topics
+          : topics // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -98,17 +152,37 @@ class __$$_GithubRepoCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
-  const _$_GithubRepo({required this.name});
+  const _$_GithubRepo(
+      {required this.fullName,
+      required this.description,
+      required this.stargazersCount,
+      required final List<String> topics,
+      required this.updatedAt})
+      : _topics = topics;
 
   factory _$_GithubRepo.fromJson(Map<String, dynamic> json) =>
       _$$_GithubRepoFromJson(json);
 
   @override
-  final String name;
+  final String fullName;
+  @override
+  final String? description;
+  @override
+  final int stargazersCount;
+  final List<String> _topics;
+  @override
+  List<String> get topics {
+    if (_topics is EqualUnmodifiableListView) return _topics;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_topics);
+  }
+
+  @override
+  final DateTime updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GithubRepo(name: $name)';
+    return 'GithubRepo(fullName: $fullName, description: $description, stargazersCount: $stargazersCount, topics: $topics, updatedAt: $updatedAt)';
   }
 
   @override
@@ -116,7 +190,11 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'GithubRepo'))
-      ..add(DiagnosticsProperty('name', name));
+      ..add(DiagnosticsProperty('fullName', fullName))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('stargazersCount', stargazersCount))
+      ..add(DiagnosticsProperty('topics', topics))
+      ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
 
   @override
@@ -124,12 +202,21 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GithubRepo &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.stargazersCount, stargazersCount) ||
+                other.stargazersCount == stargazersCount) &&
+            const DeepCollectionEquality().equals(other._topics, _topics) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, fullName, description,
+      stargazersCount, const DeepCollectionEquality().hash(_topics), updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -146,13 +233,26 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
 }
 
 abstract class _GithubRepo implements GithubRepo {
-  const factory _GithubRepo({required final String name}) = _$_GithubRepo;
+  const factory _GithubRepo(
+      {required final String fullName,
+      required final String? description,
+      required final int stargazersCount,
+      required final List<String> topics,
+      required final DateTime updatedAt}) = _$_GithubRepo;
 
   factory _GithubRepo.fromJson(Map<String, dynamic> json) =
       _$_GithubRepo.fromJson;
 
   @override
-  String get name;
+  String get fullName;
+  @override
+  String? get description;
+  @override
+  int get stargazersCount;
+  @override
+  List<String> get topics;
+  @override
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_GithubRepoCopyWith<_$_GithubRepo> get copyWith =>

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart';
+import 'package:repo_search/features/github_repo/model/github_repo.dart';
 import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
+import 'package:repo_search/features/github_repo/ui/search_bar.dart';
+import 'package:repo_search/utils/build_context_extension.dart';
 
 final githubRepoListFutureProviderFamily =
     FutureProvider.family<SearchReposResult, String>(
@@ -52,56 +57,6 @@ class GithubRepoScreen extends HookConsumerWidget {
   }
 }
 
-class SearchBar extends HookConsumerWidget {
-  const SearchBar({
-    required this.controller,
-    super.key,
-  });
-  final TextEditingController controller;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: 70,
-      child: Center(
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
-          decoration: const BoxDecoration(
-            color: Color(0xff35404d),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Row(
-              children: [
-                const Icon(Icons.search, color: Colors.grey),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Center(
-                    child: TextField(
-                      controller: controller,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.zero,
-                        isDense: true,
-                        hintText: 'search keywords',
-                        hintStyle: TextStyle(color: Colors.grey.shade400),
-                      ),
-                      onEditingComplete:
-                          FocusManager.instance.primaryFocus?.unfocus,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class Content extends HookConsumerWidget {
   const Content({
     required this.data,
@@ -113,11 +68,62 @@ class Content extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       children: [
-        for (final item in data.items)
-          ListTile(
-            title: Text(item.name),
-          ),
+        for (final item in data.items) GithubRepoItem(githubRepo: item)
       ],
+    );
+  }
+}
+
+class GithubRepoItem extends HookConsumerWidget {
+  const GithubRepoItem({
+    required this.githubRepo,
+    super.key,
+  });
+  final GithubRepo githubRepo;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final updatedAtFormatter = DateFormat.yMMMd();
+    final stargazersCountFormatter = NumberFormat.compact();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            githubRepo.fullName,
+            style: context.textTheme.titleMedium,
+          ),
+          const Gap(4),
+          if (githubRepo.description != null)
+            Text(
+              githubRepo.description!,
+              style: context.textTheme.bodySmall,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+          const Gap(8),
+          Row(
+            children: [
+              const Icon(
+                Icons.star,
+                size: 12,
+              ),
+              const Gap(2),
+              Text(
+                stargazersCountFormatter.format(githubRepo.stargazersCount),
+                style: context.textTheme.labelSmall,
+              ),
+              const Gap(8),
+              Text(
+                'Updated on ${updatedAtFormatter.format(githubRepo.updatedAt)}',
+                style: context.textTheme.labelSmall,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

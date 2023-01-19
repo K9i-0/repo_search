@@ -44,7 +44,8 @@ class MyApp extends HookConsumerWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.blue,
       ),
       home: const GithubRepoScreen(),
     );

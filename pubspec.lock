@@ -287,6 +287,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.0"
+  gap:
+    dependency: "direct main"
+    description:
+      name: gap
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   glob:
     dependency: transitive
     description:
@@ -337,7 +344,7 @@ packages:
     source: hosted
     version: "4.0.10"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -691,6 +698,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.12"
+  text_style_preview:
+    dependency: "direct main"
+    description:
+      name: text_style_preview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   timing:
     dependency: transitive
     description:
