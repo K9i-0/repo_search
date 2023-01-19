@@ -34,7 +34,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Repo Search'),
+        title: Text(context.l10n.appTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -53,8 +53,8 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
         children: [
           SearchBar(controller: searchController),
           if (searchController.text.isEmpty)
-            const Center(
-              child: Text('検索キーワードを入力してください'),
+            Center(
+              child: Text(context.l10n.searchKeywordsEmpty),
             ),
           if (searchController.text.isNotEmpty)
             Expanded(
@@ -158,7 +158,9 @@ class GithubRepoItem extends HookConsumerWidget {
                       ),
                       const Gap(8),
                       Text(
-                        'Updated on ${updatedAtFormatter.format(githubRepo.updatedAt)}',
+                        context.l10n.repoUpdatedAt(
+                            updatedAtFormatter.format(githubRepo.updatedAt)),
+                        // 'Updated on ${updatedAtFormatter.format(githubRepo.updatedAt)}',
                         style: context.textTheme.labelSmall,
                       ),
                     ],

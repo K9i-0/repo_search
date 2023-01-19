@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/features/settings/ui/settings_notifier.dart';
+import 'package:repo_search/utils/build_context_extension.dart';
 
 class SettingsScreen extends HookConsumerWidget {
   const SettingsScreen({super.key});
@@ -9,13 +10,13 @@ class SettingsScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('設定'),
+        title: Text(context.l10n.settingsTitle),
       ),
       body: ListView(
         children: [
           // テーマの切り替え
           ListTile(
-            title: const Text('テーマ'),
+            title: Text(context.l10n.settingsTheme),
             trailing: DropdownButton<ThemeMode>(
               value: ref
                   .watch(settingsProvider.select((value) => value.themeMode)),
@@ -24,25 +25,25 @@ class SettingsScreen extends HookConsumerWidget {
                   ref.read(settingsProvider.notifier).setThemeMode(value);
                 }
               },
-              items: const [
+              items: [
                 DropdownMenuItem(
                   value: ThemeMode.system,
-                  child: Text('端末の設定を使う'),
+                  child: Text(context.l10n.settingsThemeSystem),
                 ),
                 DropdownMenuItem(
                   value: ThemeMode.light,
-                  child: Text('ライト'),
+                  child: Text(context.l10n.settingsThemeLight),
                 ),
                 DropdownMenuItem(
                   value: ThemeMode.dark,
-                  child: Text('ダーク'),
+                  child: Text(context.l10n.settingsThemeDark),
                 ),
               ],
             ),
           ),
           // OOSライセンス
           ListTile(
-            title: const Text('OOSライセンス'),
+            title: const Text('OOS License'),
             onTap: () {
               showLicensePage(
                 context: context,
