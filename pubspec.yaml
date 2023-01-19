@@ -65,6 +65,7 @@ dev_dependencies:
   build_runner: ^2.3.3
   json_serializable: ^6.5.4
   freezed: ^2.3.2
+  flutter_gen_runner: ^5.1.0+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -78,6 +79,8 @@ flutter:
 
   assets:
     - .env
+    - assets/images/
+    
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
@@ -111,3 +114,11 @@ flutter_intl:
   main_locale: en
   arb_dir: lib/resource/l10n
   output_dir: lib/resource/l10n/generated
+
+# flutter_genの生成場所を変更
+flutter_gen:
+  output: lib/resource
+
+flutter_icons:
+  android: true
+  ios: true
