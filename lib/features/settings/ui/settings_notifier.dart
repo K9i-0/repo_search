@@ -7,6 +7,7 @@ final settingsProvider = NotifierProvider<SettingsNotifier, SettingsState>(
   () => SettingsNotifier(),
 );
 
+/// アプリの設定を管理するNotifier
 class SettingsNotifier extends Notifier<SettingsState> {
   @override
   SettingsState build() {
@@ -15,7 +16,8 @@ class SettingsNotifier extends Notifier<SettingsState> {
     );
   }
 
-  void setThemeMode(ThemeMode themeMode) {
+  Future<void> setThemeMode(ThemeMode themeMode) async {
+    await ref.read(settingsRepositoryProvider).setThemeMode(themeMode);
     state = state.copyWith(themeMode: themeMode);
   }
 }

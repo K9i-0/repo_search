@@ -10,4 +10,6 @@ final sharedPreferencesProvider = Provider<SharedPreferences>(
 /// Keyとしてはenumのnameを使う
 enum SharedPreferencesKeys {
   themeMode,
+  searchSettingsSort,
+  searchSettingsOrder,
 }

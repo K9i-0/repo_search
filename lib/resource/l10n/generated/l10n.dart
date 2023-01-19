@@ -180,6 +180,96 @@ class L10n {
     );
   }
 
+  /// `Order`
+  String get searchSettingsOrder {
+    return Intl.message(
+      'Order',
+      name: 'searchSettingsOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ascending`
+  String get searchSettingsOrderAsc {
+    return Intl.message(
+      'Ascending',
+      name: 'searchSettingsOrderAsc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Descending`
+  String get searchSettingsOrderDesc {
+    return Intl.message(
+      'Descending',
+      name: 'searchSettingsOrderDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sort`
+  String get searchSettingsSort {
+    return Intl.message(
+      'Sort',
+      name: 'searchSettingsSort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forks count`
+  String get searchSettingsSortForks {
+    return Intl.message(
+      'Forks count',
+      name: 'searchSettingsSortForks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help wanted issues count`
+  String get searchSettingsSortHelpWantedIssues {
+    return Intl.message(
+      'Help wanted issues count',
+      name: 'searchSettingsSortHelpWantedIssues',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stars count`
+  String get searchSettingsSortStars {
+    return Intl.message(
+      'Stars count',
+      name: 'searchSettingsSortStars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated time`
+  String get searchSettingsSortUpdated {
+    return Intl.message(
+      'Updated time',
+      name: 'searchSettingsSortUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search Settings`
+  String get searchSettingsTitle {
+    return Intl.message(
+      'Search Settings',
+      name: 'searchSettingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Theme`
   String get settingsTheme {
     return Intl.message(
