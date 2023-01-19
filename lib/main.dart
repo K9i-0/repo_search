@@ -1,11 +1,14 @@
 import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/common/shared_preferences.dart';
 import 'package:repo_search/features/github_repo/ui/github_repo_search_screen.dart';
 import 'package:repo_search/features/settings/ui/settings_notifier.dart';
+import 'package:repo_search/resource/l10n/generated/l10n.dart';
+import 'package:repo_search/utils/build_context_extension.dart';
 import 'package:repo_search/utils/device_preview_screenshot_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,6 +36,8 @@ Future<void> main() async {
             onScreenshot: onScreenshot,
           ),
         ],
+        // DevicePreviewでサポートしてない言語が出なくなる
+        availableLocales: L10n.delegate.supportedLocales,
         builder: (context) => const MyApp(),
       ),
     ),
@@ -45,7 +50,14 @@ class MyApp extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      title: 'Repo Search',
+      onGenerateTitle: (context) => context.l10n.appTitle,
+      localizationsDelegates: const [
+        L10n.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: L10n.delegate.supportedLocales,
       // useInheritedMediaQuery、locale、builderは、DevicePreviewに必要
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),

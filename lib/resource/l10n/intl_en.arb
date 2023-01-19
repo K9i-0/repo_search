@@ -1,0 +1,20 @@
+{
+    "appTitle": "Repo Search",
+    "githubRepoDescription": "Description",
+    "githubRepoDescriptionEmpty": "No description",
+    "githubRepoFork": "Fork",
+    "githubRepoFullName": "Repository Name",
+    "githubRepoLanguage": "Language",
+    "githubRepoLanguageEmpty": "No language specified",
+    "githubRepoOpenIssues": "Open Issues",
+    "githubRepoStar": "Star",
+    "githubRepoWatch": "Watch",
+    "repoUpdatedAt": "Updated at {updatedAt}",
+    "searchBarHint": "search keywords",
+    "searchKeywordsEmpty": "Please enter search keywords",
+    "settingsTheme": "Theme",
+    "settingsThemeDark": "Dark",
+    "settingsThemeLight": "Light",
+    "settingsThemeSystem": "System default",
+    "settingsTitle": "Settings"
+}

@@ -1,0 +1,20 @@
+{
+    "appTitle": "りぽさーち",
+    "githubRepoDescription": "説明",
+    "githubRepoDescriptionEmpty": "説明がありません",
+    "githubRepoFork": "Fork数",
+    "githubRepoFullName": "リポジトリ名",
+    "githubRepoLanguage": "言語",
+    "githubRepoLanguageEmpty": "不明",
+    "githubRepoOpenIssues": "Open Issues数",
+    "githubRepoStar": "Star数",
+    "githubRepoWatch": "Watch数",
+    "repoUpdatedAt": "{updatedAt}に更新",
+    "searchBarHint": "キーワードで検索",
+    "searchKeywordsEmpty": "検索キーワードを入力してください",
+    "settingsTheme": "テーマ",
+    "settingsThemeDark": "ダーク",
+    "settingsThemeLight": "ライト",
+    "settingsThemeSystem": "端末の設定を使う",
+    "settingsTitle": "設定"
+}

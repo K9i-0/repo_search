@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:repo_search/utils/build_context_extension.dart';
 
 class SearchBar extends HookConsumerWidget {
   const SearchBar({
@@ -34,7 +35,7 @@ class SearchBar extends HookConsumerWidget {
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.zero,
                         isDense: true,
-                        hintText: 'search keywords',
+                        hintText: context.l10n.searchBarHint,
                         hintStyle: TextStyle(color: Colors.grey.shade400),
                       ),
                       onEditingComplete:

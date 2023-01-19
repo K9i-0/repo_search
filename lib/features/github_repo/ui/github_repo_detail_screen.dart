@@ -46,28 +46,42 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
               ),
             ),
             const Gap(32),
-            const SectionTitle(
-              title: 'Repository Name',
+            SectionTitle(
+              title: context.l10n.githubRepoFullName,
             ),
             Text(githubRepo.fullName),
             const Gap(16),
-            const SectionTitle(
-              title: 'Description',
+            SectionTitle(
+              title: context.l10n.githubRepoDescription,
             ),
-            Text(githubRepo.description ?? 'No description'),
-            const Gap(16),
-            const SectionTitle(
-              title: 'Language',
+            Text(
+              githubRepo.description ?? context.l10n.githubRepoDescriptionEmpty,
+              style: githubRepo.description == null
+                  ? TextStyle(
+                      color: Theme.of(context).disabledColor,
+                    )
+                  : null,
             ),
-            Text(githubRepo.language ?? 'No language specified'),
             const Gap(16),
-            const SectionTitle(
-              title: 'Stargazers Count',
+            SectionTitle(
+              title: context.l10n.githubRepoLanguage,
+            ),
+            Text(
+              githubRepo.language ?? context.l10n.githubRepoDescriptionEmpty,
+              style: githubRepo.language == null
+                  ? TextStyle(
+                      color: Theme.of(context).disabledColor,
+                    )
+                  : null,
+            ),
+            const Gap(16),
+            SectionTitle(
+              title: context.l10n.githubRepoStar,
             ),
             Text(countFormat.format(githubRepo.stargazersCount)),
             const Gap(16),
-            const SectionTitle(
-              title: 'Watchers Count',
+            SectionTitle(
+              title: context.l10n.githubRepoWatch,
             ),
             watchersCountAsync.when(
               data: (data) => Text(countFormat.format(data)),
@@ -75,13 +89,13 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
               loading: () => const Center(child: CircularProgressIndicator()),
             ),
             const Gap(16),
-            const SectionTitle(
-              title: 'Forks Count',
+            SectionTitle(
+              title: context.l10n.githubRepoFork,
             ),
             Text(countFormat.format(githubRepo.forksCount)),
             const Gap(16),
-            const SectionTitle(
-              title: 'Open Issues Count',
+            SectionTitle(
+              title: context.l10n.githubRepoOpenIssues,
             ),
             Text(countFormat.format(githubRepo.openIssuesCount)),
           ],
