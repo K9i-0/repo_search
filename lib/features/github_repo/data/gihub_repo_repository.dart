@@ -24,6 +24,7 @@ class GithubRepoRepository {
     required String searchKeywords,
     required SearchSettingsSort sort,
     required SearchSettingsOrder order,
+    required int page,
   }) async {
     final uri = Uri(
       scheme: 'https',
@@ -33,6 +34,7 @@ class GithubRepoRepository {
         'q': searchKeywords,
         'sort': sort.queryParamValue,
         'order': order.queryParamValue,
+        'page': page.toString(),
       },
     );
 

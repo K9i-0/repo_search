@@ -3,10 +3,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart';
 import 'package:repo_search/features/github_repo/model/github_repo.dart';
-import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
+import 'package:repo_search/features/github_repo/model/github_repo_list_state.dart';
 import 'package:repo_search/features/github_repo/ui/github_repo_detail_screen.dart';
+import 'package:repo_search/features/github_repo/ui/github_repo_list_notifier.dart';
 import 'package:repo_search/features/github_repo/ui/owner_image.dart';
 import 'package:repo_search/features/github_repo/ui/search_bar.dart';
 import 'package:repo_search/features/github_repo/ui/search_settings_notifier.dart';
@@ -14,20 +14,7 @@ import 'package:repo_search/features/github_repo/ui/search_settings_sheet.dart';
 import 'package:repo_search/features/settings/ui/settings_screen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 import 'package:repo_search/widgets/common_sheet.dart';
-
-final githubRepoListFutureProviderFamily =
-    FutureProvider.family.autoDispose<SearchReposResult, String>(
-  (ref, searchKeywords) {
-    final result = ref.watch(githubRepoRepositoryProvider).searchRepos(
-          searchKeywords: searchKeywords,
-          sort: ref.watch(searchSettingsProvider.select((value) => value.sort)),
-          order:
-              ref.watch(searchSettingsProvider.select((value) => value.order)),
-        );
-    ref.keepAlive();
-    return result;
-  },
-);
+import 'package:visibility_detector/visibility_detector.dart';
 
 class GithubRepoSearchScreen extends HookConsumerWidget {
   const GithubRepoSearchScreen({super.key});
@@ -86,14 +73,22 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
           if (searchController.text.isNotEmpty)
             Expanded(
               child: ref
-                  .watch(
-                      githubRepoListFutureProviderFamily(searchController.text))
+                  .watch(githubRepoListProviderFamily(searchController.text))
                   .when(
-                    data: (data) => Content(data: data),
+                    data: (data) => Content(
+                      data: data,
+                      onScrollEnd: () => ref
+                          .read(githubRepoListProviderFamily(
+                                  searchController.text)
+                              .notifier)
+                          .loadNext(),
+                    ),
                     loading: () => const Center(
                       child: CircularProgressIndicator(),
                     ),
-                    error: (error, stackTrace) => const Text('error'),
+                    error: (error, stackTrace) => Center(
+                      child: Text(error.toString()),
+                    ),
                   ),
             ),
         ],
@@ -105,16 +100,41 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
 class Content extends HookConsumerWidget {
   const Content({
     required this.data,
+    required this.onScrollEnd,
     super.key,
   });
-  final SearchReposResult data;
+  final GithubRepoListState data;
+  final VoidCallback onScrollEnd;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView(
-      children: [
-        for (final item in data.items) GithubRepoItem(githubRepo: item)
-      ],
+    final hasMore = data.hasMore;
+
+    return ListView.builder(
+      itemCount: data.items.length + (hasMore ? 1 : 0),
+      itemBuilder: (context, index) {
+        // 最後の要素に達したら次のページを読み込む
+        if (index == data.items.length) {
+          return VisibilityDetector(
+            key: const Key("GithubRepoSearchScreen"),
+            onVisibilityChanged: (info) {
+              if (info.visibleFraction > 0.1) {
+                onScrollEnd();
+              }
+            },
+            child: const Center(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
+
+        return GithubRepoItem(
+          githubRepo: data.items[index],
+        );
+      },
     );
   }
 }
