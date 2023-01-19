@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
+import 'package:repo_search/features/github_repo/model/search_settings_state.dart';
 
 final githubRepoRepositoryProvider = Provider<GithubRepoRepository>(
   (ref) => GithubRepoRepository(
@@ -21,9 +22,22 @@ class GithubRepoRepository {
   /// https://docs.github.com/ja/rest/search?apiVersion=2022-11-28#search-repositories
   Future<SearchReposResult> searchRepos({
     required String searchKeywords,
+    required SearchSettingsSort sort,
+    required SearchSettingsOrder order,
   }) async {
-    final response = await dio.get(
-      'https://api.github.com/search/repositories?q=$searchKeywords',
+    final uri = Uri(
+      scheme: 'https',
+      host: 'api.github.com',
+      path: '/search/repositories',
+      queryParameters: {
+        'q': searchKeywords,
+        'sort': sort.queryParamValue,
+        'order': order.queryParamValue,
+      },
+    );
+
+    final response = await dio.getUri(
+      uri,
       options: Options(
         headers: {
           'Accept': 'application/vnd.github.v3+json',

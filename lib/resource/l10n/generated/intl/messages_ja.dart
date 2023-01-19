@@ -40,6 +40,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchBarHint": MessageLookupByLibrary.simpleMessage("キーワードで検索"),
         "searchKeywordsEmpty":
             MessageLookupByLibrary.simpleMessage("検索キーワードを入力してください"),
+        "searchSettingsOrder": MessageLookupByLibrary.simpleMessage("並び順"),
+        "searchSettingsOrderAsc": MessageLookupByLibrary.simpleMessage("昇順"),
+        "searchSettingsOrderDesc": MessageLookupByLibrary.simpleMessage("降順"),
+        "searchSettingsSort": MessageLookupByLibrary.simpleMessage("並び替え"),
+        "searchSettingsSortForks":
+            MessageLookupByLibrary.simpleMessage("Fork数"),
+        "searchSettingsSortHelpWantedIssues":
+            MessageLookupByLibrary.simpleMessage("助けが必要なIssue数"),
+        "searchSettingsSortStars":
+            MessageLookupByLibrary.simpleMessage("Star数"),
+        "searchSettingsSortUpdated":
+            MessageLookupByLibrary.simpleMessage("更新日時"),
+        "searchSettingsTitle": MessageLookupByLibrary.simpleMessage("検索設定"),
         "settingsTheme": MessageLookupByLibrary.simpleMessage("テーマ"),
         "settingsThemeDark": MessageLookupByLibrary.simpleMessage("ダーク"),
         "settingsThemeLight": MessageLookupByLibrary.simpleMessage("ライト"),

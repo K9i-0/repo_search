@@ -44,6 +44,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("search keywords"),
         "searchKeywordsEmpty": MessageLookupByLibrary.simpleMessage(
             "Please enter search keywords"),
+        "searchSettingsOrder": MessageLookupByLibrary.simpleMessage("Order"),
+        "searchSettingsOrderAsc":
+            MessageLookupByLibrary.simpleMessage("Ascending"),
+        "searchSettingsOrderDesc":
+            MessageLookupByLibrary.simpleMessage("Descending"),
+        "searchSettingsSort": MessageLookupByLibrary.simpleMessage("Sort"),
+        "searchSettingsSortForks":
+            MessageLookupByLibrary.simpleMessage("Forks count"),
+        "searchSettingsSortHelpWantedIssues":
+            MessageLookupByLibrary.simpleMessage("Help wanted issues count"),
+        "searchSettingsSortStars":
+            MessageLookupByLibrary.simpleMessage("Stars count"),
+        "searchSettingsSortUpdated":
+            MessageLookupByLibrary.simpleMessage("Updated time"),
+        "searchSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("Search Settings"),
         "settingsTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingsThemeDark": MessageLookupByLibrary.simpleMessage("Dark"),
         "settingsThemeLight": MessageLookupByLibrary.simpleMessage("Light"),

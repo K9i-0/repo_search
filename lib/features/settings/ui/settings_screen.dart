@@ -20,9 +20,9 @@ class SettingsScreen extends HookConsumerWidget {
             trailing: DropdownButton<ThemeMode>(
               value: ref
                   .watch(settingsProvider.select((value) => value.themeMode)),
-              onChanged: (value) {
+              onChanged: (value) async {
                 if (value != null) {
-                  ref.read(settingsProvider.notifier).setThemeMode(value);
+                  await ref.read(settingsProvider.notifier).setThemeMode(value);
                 }
               },
               items: [

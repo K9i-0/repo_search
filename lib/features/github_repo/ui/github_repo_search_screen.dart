@@ -9,14 +9,20 @@ import 'package:repo_search/features/github_repo/model/search_repos_result.dart'
 import 'package:repo_search/features/github_repo/ui/github_repo_detail_screen.dart';
 import 'package:repo_search/features/github_repo/ui/owner_image.dart';
 import 'package:repo_search/features/github_repo/ui/search_bar.dart';
+import 'package:repo_search/features/github_repo/ui/search_settings_notifier.dart';
+import 'package:repo_search/features/github_repo/ui/search_settings_sheet.dart';
 import 'package:repo_search/features/settings/ui/settings_screen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
+import 'package:repo_search/widgets/common_sheet.dart';
 
 final githubRepoListFutureProviderFamily =
     FutureProvider.family.autoDispose<SearchReposResult, String>(
   (ref, searchKeywords) {
     final result = ref.watch(githubRepoRepositoryProvider).searchRepos(
           searchKeywords: searchKeywords,
+          sort: ref.watch(searchSettingsProvider.select((value) => value.sort)),
+          order:
+              ref.watch(searchSettingsProvider.select((value) => value.order)),
         );
     ref.keepAlive();
     return result;
@@ -36,6 +42,27 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(context.l10n.appTitle),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.tune),
+            onPressed: () async {
+              await showCommonSheet(
+                context: context,
+                title: context.l10n.searchSettingsTitle,
+                // シートを閉じるまで再検索しないために、シート内で別のProviderScopeを使う
+                builder: (context) => ProviderScope(
+                  overrides: [
+                    searchSettingsProvider.overrideWith(
+                      () => SearchSettingNotifier(),
+                    ),
+                  ],
+                  child: const SearchSettingsSheet(),
+                ),
+              );
+
+              // シートを閉じたタイミングでリビルドさせ新しい設定で検索する（設定は永続化されているので、リビルドで読み直せる）
+              ref.invalidate(searchSettingsProvider);
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () => Navigator.push(
