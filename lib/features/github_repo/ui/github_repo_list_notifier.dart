@@ -64,9 +64,10 @@ class GithubRepoListNotifier
               page: value.page + 1,
             );
 
+        final items = [...value.items, ...next.items];
         return value.copyWith(
-          items: [...value.items, ...next.items],
-          hasMore: next.items.length < next.totalCount,
+          items: items,
+          hasMore: items.length < next.totalCount,
           page: value.page + 1,
         );
       },
