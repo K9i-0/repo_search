@@ -66,6 +66,13 @@ dev_dependencies:
   json_serializable: ^6.5.4
   freezed: ^2.3.2
   flutter_gen_runner: ^5.1.0+1
+  flutter_launcher_icons: ^0.11.0
+  flutter_native_splash: ^2.2.17
+
+dependency_overrides:
+  # image: ^4.0.10
+  # flutter_launcher_iconsが3.0.2に依存しているのでアイコン生成時は切り替える
+  image: ^3.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -80,7 +87,7 @@ flutter:
   assets:
     - .env
     - assets/images/
-    
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
