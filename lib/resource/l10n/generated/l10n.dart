@@ -120,6 +120,26 @@ class L10n {
     );
   }
 
+  /// `License`
+  String get githubRepoLicense {
+    return Intl.message(
+      'License',
+      name: 'githubRepoLicense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No license specified`
+  String get githubRepoLicenseEmpty {
+    return Intl.message(
+      'No license specified',
+      name: 'githubRepoLicenseEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Open Issues`
   String get githubRepoOpenIssues {
     return Intl.message(
@@ -135,6 +155,26 @@ class L10n {
     return Intl.message(
       'Star',
       name: 'githubRepoStar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Topics`
+  String get githubRepoTopics {
+    return Intl.message(
+      'Topics',
+      name: 'githubRepoTopics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated at`
+  String get githubRepoUpdatedAt {
+    return Intl.message(
+      'Updated at',
+      name: 'githubRepoUpdatedAt',
       desc: '',
       args: [],
     );
