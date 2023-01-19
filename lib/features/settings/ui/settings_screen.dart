@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/features/settings/ui/settings_notifier.dart';
+import 'package:repo_search/resource/assets.gen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 
 class SettingsScreen extends HookConsumerWidget {
@@ -49,10 +50,10 @@ class SettingsScreen extends HookConsumerWidget {
                 context: context,
                 applicationName: 'Repo Search',
                 applicationVersion: '1.0.0',
-                applicationIcon: const SizedBox(
-                  width: 48,
-                  height: 48,
-                  child: FlutterLogo(),
+                applicationIcon: SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Assets.images.appIcon.image(),
                 ),
               );
             },

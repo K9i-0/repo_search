@@ -7,13 +7,17 @@
         {
             "name": "repo_search",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--dart-define=FLAVOR=dev"
+            ],
         },
         {
             "name": "repo_search (with device_preview)",
             "request": "launch",
             "type": "dart",
             "args": [
+                "--dart-define=FLAVOR=dev",
                 "--dart-define=enable_device_preview=true",
             ],
         },
@@ -21,13 +25,19 @@
             "name": "repo_search (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define=FLAVOR=stg"
+            ],
         },
         {
             "name": "repo_search (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": [
+                "--dart-define=FLAVOR=prod"
+            ],
         }
     ]
 }

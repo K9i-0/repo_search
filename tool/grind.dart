@@ -48,3 +48,18 @@ void up() {
     workingDirectory: 'ios',
   );
 }
+
+@Task('fluttergenでassetsを生成')
+void ga() {
+  _runCommand(command: 'fluttergen -c pubspec.yaml');
+}
+
+@Task('flutter_launcher_iconsでアイコンを生成')
+void gi() {
+  _runCommand(command: 'flutter pub run flutter_launcher_icons:main');
+}
+
+@Task('flutter_native_splashでスプラッシュを生成')
+void gs() {
+  _runCommand(command: 'flutter pub run flutter_native_splash:create');
+}
