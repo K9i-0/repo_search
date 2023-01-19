@@ -3,16 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
+import 'package:repo_search/common/shared_preferences.dart';
 import 'package:repo_search/features/github_repo/ui/github_repo_search_screen.dart';
+import 'package:repo_search/features/settings/ui/settings_notifier.dart';
 import 'package:repo_search/utils/device_preview_screenshot_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final sharedPreferences = await SharedPreferences.getInstance();
   // .evnから環境変数を読み込む
   await dotenv.load(fileName: '.env');
 
   runApp(
     ProviderScope(
       overrides: [
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
         // 環境変数からGithubのアクセストークンを取得する
         githubAccessTokenProvider.overrideWithValue(
           dotenv.get('GITHUB_ACCESS_TOKEN'),
@@ -47,6 +54,12 @@ class MyApp extends HookConsumerWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.blue,
+        brightness: Brightness.dark,
+      ),
+      themeMode: ref.watch(settingsProvider.select((value) => value.themeMode)),
       home: const GithubRepoSearchScreen(),
     );
   }

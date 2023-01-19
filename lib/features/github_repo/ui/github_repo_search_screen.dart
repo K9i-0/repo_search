@@ -9,6 +9,7 @@ import 'package:repo_search/features/github_repo/model/github_repo.dart';
 import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
 import 'package:repo_search/features/github_repo/ui/github_repo_detail_screen.dart';
 import 'package:repo_search/features/github_repo/ui/search_bar.dart';
+import 'package:repo_search/features/settings/ui/settings_screen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 
 final githubRepoListFutureProviderFamily =
@@ -34,6 +35,19 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Repo Search'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) {
+                  return const SettingsScreen();
+                },
+              ),
+            ),
+          )
+        ],
       ),
       body: Column(
         children: [
