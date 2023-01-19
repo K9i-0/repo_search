@@ -32,9 +32,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "githubRepoFullName": MessageLookupByLibrary.simpleMessage("リポジトリ名"),
         "githubRepoLanguage": MessageLookupByLibrary.simpleMessage("言語"),
         "githubRepoLanguageEmpty": MessageLookupByLibrary.simpleMessage("不明"),
+        "githubRepoLicense": MessageLookupByLibrary.simpleMessage("ライセンス"),
+        "githubRepoLicenseEmpty": MessageLookupByLibrary.simpleMessage("不明"),
         "githubRepoOpenIssues":
             MessageLookupByLibrary.simpleMessage("Open Issues数"),
         "githubRepoStar": MessageLookupByLibrary.simpleMessage("Star数"),
+        "githubRepoTopics": MessageLookupByLibrary.simpleMessage("トピック"),
+        "githubRepoUpdatedAt": MessageLookupByLibrary.simpleMessage("更新日時"),
         "githubRepoWatch": MessageLookupByLibrary.simpleMessage("Watch数"),
         "repoUpdatedAt": m0,
         "searchBarHint": MessageLookupByLibrary.simpleMessage("キーワードで検索"),

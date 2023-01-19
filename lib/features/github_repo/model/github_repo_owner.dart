@@ -9,7 +9,9 @@ part 'github_repo_owner.g.dart';
 class GithubRepoOwner with _$GithubRepoOwner {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory GithubRepoOwner({
+    required String login,
     required String avatarUrl,
+    required String htmlUrl,
   }) = _GithubRepoOwner;
 
   factory GithubRepoOwner.fromJson(Map<String, dynamic> json) =>

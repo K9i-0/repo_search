@@ -35,9 +35,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "githubRepoLanguage": MessageLookupByLibrary.simpleMessage("Language"),
         "githubRepoLanguageEmpty":
             MessageLookupByLibrary.simpleMessage("No language specified"),
+        "githubRepoLicense": MessageLookupByLibrary.simpleMessage("License"),
+        "githubRepoLicenseEmpty":
+            MessageLookupByLibrary.simpleMessage("No license specified"),
         "githubRepoOpenIssues":
             MessageLookupByLibrary.simpleMessage("Open Issues"),
         "githubRepoStar": MessageLookupByLibrary.simpleMessage("Star"),
+        "githubRepoTopics": MessageLookupByLibrary.simpleMessage("Topics"),
+        "githubRepoUpdatedAt":
+            MessageLookupByLibrary.simpleMessage("Updated at"),
         "githubRepoWatch": MessageLookupByLibrary.simpleMessage("Watch"),
         "repoUpdatedAt": m0,
         "searchBarHint":
