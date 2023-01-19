@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
-import 'package:repo_search/features/github_repo/ui/github_repo_screen.dart';
+import 'package:repo_search/features/github_repo/ui/github_repo_search_screen.dart';
 import 'package:repo_search/utils/device_preview_screenshot_helper.dart';
 
 Future<void> main() async {
@@ -44,9 +44,10 @@ class MyApp extends HookConsumerWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.blue,
       ),
-      home: const GithubRepoScreen(),
+      home: const GithubRepoSearchScreen(),
     );
   }
 }

@@ -35,4 +35,25 @@ class GithubRepoRepository {
 
     return SearchReposResult.fromJson(response.data);
   }
+
+  /// Search repositoriesで取得できるwatchers_countは、正確で無いのでsubscribers_countを取得する
+  ///
+  /// https://github.com/hackenbacker/ios-engineer-codecheck/issues/29
+  /// 注意：[searchRepos]に含めてしまうと検索にヒットしたリポジトリの数リクエストを送ってしまうので詳細画面を開く際個別で取得する
+  Future<int> getWatchersCount({
+    required String repositoryUrl,
+  }) async {
+    final response = await dio.get(
+      repositoryUrl,
+      options: Options(
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': 'token $token',
+          'X-GitHub-Api-Version': '2022-11-28',
+        },
+      ),
+    );
+
+    return response.data['subscribers_count'];
+  }
 }
