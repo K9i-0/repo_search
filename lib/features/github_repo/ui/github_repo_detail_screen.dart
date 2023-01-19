@@ -13,8 +13,8 @@ final watchersCountFutureProviderFamily =
     FutureProvider.family.autoDispose<int, String>((
   ref,
   repositoryUrl,
-) {
-  final result = ref.watch(githubRepoRepositoryProvider).getWatchersCount(
+) async {
+  final result = await ref.watch(githubRepoRepositoryProvider).getWatchersCount(
         repositoryUrl: repositoryUrl,
       );
   ref.keepAlive();

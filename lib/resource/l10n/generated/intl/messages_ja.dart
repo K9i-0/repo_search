@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchBarHint": MessageLookupByLibrary.simpleMessage("キーワードで検索"),
         "searchKeywordsEmpty":
             MessageLookupByLibrary.simpleMessage("検索キーワードを入力してください"),
+        "searchResultEmpty": MessageLookupByLibrary.simpleMessage(
+            "結果が見つかりませんでした。検索ワードを変えてみてください。"),
         "searchSettingsOrder": MessageLookupByLibrary.simpleMessage("並び順"),
         "searchSettingsOrderAsc": MessageLookupByLibrary.simpleMessage("昇順"),
         "searchSettingsOrderDesc": MessageLookupByLibrary.simpleMessage("降順"),
