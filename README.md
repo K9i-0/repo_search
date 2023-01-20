@@ -30,3 +30,75 @@ VS Codeを使う場合は以下の４つが設定されています。いずれ�
 ![SCR-20230120-bwl](https://user-images.githubusercontent.com/90010509/213585600-ec732ee4-78a9-42c1-b02b-8eca8f7cbcd2.png)
 
 Android Studioを使う場合は *.vscode/launch.json* を参考に--dart-defineを設定して起動してください。
+
+### Grinderタスク
+
+開発中よく使うコマンドなどをGrinderタスクとして登録しています。[Grinderの解説記事](https://zenn.dev/k9i/articles/bcfa83b08e56d6)
+
+登録タスクはgrind -hで確認できます。更新時点のタスク
+```
+Available tasks:
+  up                   CocoaPodsのアップデート(パッケージアプデ時に使う)
+  ga                   fluttergenでassetsを生成
+  gi                   flutter_launcher_iconsでアイコンを生成
+  b                    flutter pub run build_runner build --delete-conflicting-outputs
+  gs                   flutter_native_splashでスプラッシュを生成
+```
+
+## ディレクトリ構成
+
+lib下は以下の構成です
+
+```
+.
+├── common
+├── features
+│   ├── github_repo
+│   │   ├── data
+│   │   ├── model
+│   │   └── ui
+│   └── settings
+│       ├── data
+│       ├── model
+│       └── ui
+├── main.dart
+├── resource
+│   ├── assets.gen.dart
+│   └── l10n
+├── utils
+└── widgets
+```
+
+フィーチャーファーストな構成になっています。
+
+### lib直下にあるディレクトリの説明
+
+#### commmon
+汎用系のクラスなどが入ります。現在はSharedPrecerenceが入っています。
+#### features
+機能に関するコードが入っています。features内の構成は後述
+機能に着目しているので、github_repoディレクトリなどはリポジトリ検索とリポジトリ詳細の2つの画面が入ります。
+#### resource
+文言やflutter_genで生成したassetsが入っています。
+#### utils
+extensionなどの便利メソッドが入っています。
+#### widgets
+汎用Widgetが入っています。意味的にcommonと被りますがこちらはWidget限定です。
+
+### features/xxx下にあるディレクトリの説明
+
+#### data
+データの永続化、外部サービスからの取得を担うrepositoryが入っています。
+#### model
+APIから取得したデータをパースするためのクラス、Notifierが持つ状態のクラスが入っています。
+#### ui
+画面を構成するWidgetや、Widgetからロジックを切り出したNotifierが入っています。
+
+providerの置き場所に関して、シンプルなデータ取得ならFutureProviderとしてWidgetと同じファイルに記述しています。ある程度複雑な処理（ページングなど）はそれ用のnotifierファイルを作って、providerもそこに記述しています。
+
+## 影響を受けている記事・リポジトリ
+
+https://medium.com/flutter-jp/architecture-240d3c56b597
+
+https://github.com/lichess-org/mobile
+
