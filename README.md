@@ -49,18 +49,21 @@ Available tasks:
 主な機能の説明です
 
 ### リポジトリ検索
-入力したキーワードでGithubのリポジトリを検索します。ページングに対応しています。
-右上のアクションボタンを押すと検索条件を変更できます。
+- 入力したキーワードでGithubのリポジトリを検索します。ページングに対応しています。
+- 右上のアクションボタンを押すと検索条件を変更できます。
 
 <img src="https://user-images.githubusercontent.com/90010509/213673405-31cac64e-9bc2-4699-869d-eb1e63006cf5.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213673807-de021910-1308-46d4-9b48-17a7b020bfeb.png" width="50%" />
 
 ### リポジトリ詳細表示
-検索結果のItemをタップすることで詳細情報を表示できます。
+- 検索結果のItemをタップすることで詳細情報を表示できます。
+- 青色になっている部分はボタンで、種類に応じてブラウザでURLを開きます。
 
+<img src="https://user-images.githubusercontent.com/90010509/213674446-8428c860-4b40-4178-89b4-4724bd7dfa40.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213674441-fa1239eb-d929-49f0-b55d-ef5100cbac89.png" width="50%" />
+
+### 設定
+![iPhone 13 Mini_2023-01-20 19:35:05 503054](https://user-images.githubusercontent.com/90010509/213675078-e1d540ce-65cf-4aef-b810-653b833579b6.png)
+![iPhone 13 Mini_2023-01-20 19:34:54 077412](https://user-images.githubusercontent.com/90010509/213675084-ffb69bbd-7deb-4509-972e-3ed8ad91ed1d.png)
 <img src="$1" width="50%" /><img src="$1" width="50%" />
-![iPhone 13 Mini_2023-01-20 19:32:08 434193](https://user-images.githubusercontent.com/90010509/213674441-fa1239eb-d929-49f0-b55d-ef5100cbac89.png)
-![iPhone 13 Mini_2023-01-20 19:32:03 548368](https://user-images.githubusercontent.com/90010509/213674446-8428c860-4b40-4178-89b4-4724bd7dfa40.png)
-
 
 
 ## ディレクトリ構成
