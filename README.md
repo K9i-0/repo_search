@@ -94,7 +94,28 @@ APIから取得したデータをパースするためのクラス、Notifierが
 #### ui
 画面を構成するWidgetや、Widgetからロジックを切り出したNotifierが入っています。
 
-providerの置き場所に関して、シンプルなデータ取得ならFutureProviderとしてWidgetと同じファイルに記述しています。ある程度複雑な処理（ページングなど）はそれ用のnotifierファイルを作って、providerもそこに記述しています。
+providerの置き場所に関して、シンプルなデータ取得ならFutureProviderとしてWidgetと同じファイルに記述しています。ある程度複雑な処理（ページングなど）はそれ用のnotifierファイルを作って、providerもそこに記述しています
+
+## 主な利用パッケージ
+利用しているパッケージの一部について説明します。
+
+### hooks_riverpod、flutter_hooks
+
+状態管理、DIに[Riverpod](https://docs-v2.riverpod.dev/)をflutter_hooksと合わせて使っています。
+コード生成は現状生成待ちのデメリットが大きいと判断して使っていません。
+
+公式がStateNotifierProviderより（Async）NotifierProviderをお勧めしているのでそうしています。
+
+### device_preview、text_style_preview
+
+レイアウト構成を効率化するために[device_preview](https://pub.dev/packages/device_preview)パッケージを使っています。
+複数のデバイス・テーマの切り替え・言語切り替えで役立てています。
+
+レイアウト繋がりで、文字サイズの調整に[text_style_preview](https://pub.dev/packages/text_style_preview)パッケージを使っています。
+
+### freezed
+APIから取得したJsonをパースするクラスや、イミュータブルな状態用クラスの生成に使っています。
+
 
 ## 影響を受けている記事・リポジトリ
 
