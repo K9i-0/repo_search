@@ -45,6 +45,24 @@ Available tasks:
   gs                   flutter_native_splashでスプラッシュを生成
 ```
 
+## 機能の説明
+主な機能の説明です
+
+### リポジトリ検索
+入力したキーワードでGithubのリポジトリを検索します。ページングに対応しています。
+右上のアクションボタンを押すと検索条件を変更できます。
+
+<img src="https://user-images.githubusercontent.com/90010509/213673405-31cac64e-9bc2-4699-869d-eb1e63006cf5.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213673807-de021910-1308-46d4-9b48-17a7b020bfeb.png" width="50%" />
+
+### リポジトリ詳細表示
+検索結果のItemをタップすることで詳細情報を表示できます。
+
+<img src="$1" width="50%" /><img src="$1" width="50%" />
+![iPhone 13 Mini_2023-01-20 19:32:08 434193](https://user-images.githubusercontent.com/90010509/213674441-fa1239eb-d929-49f0-b55d-ef5100cbac89.png)
+![iPhone 13 Mini_2023-01-20 19:32:03 548368](https://user-images.githubusercontent.com/90010509/213674446-8428c860-4b40-4178-89b4-4724bd7dfa40.png)
+
+
+
 ## ディレクトリ構成
 
 lib下は以下の構成です
