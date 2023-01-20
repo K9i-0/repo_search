@@ -61,9 +61,10 @@ Available tasks:
 <img src="https://user-images.githubusercontent.com/90010509/213674446-8428c860-4b40-4178-89b4-4724bd7dfa40.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213674441-fa1239eb-d929-49f0-b55d-ef5100cbac89.png" width="50%" />
 
 ### 設定
-![iPhone 13 Mini_2023-01-20 19:35:05 503054](https://user-images.githubusercontent.com/90010509/213675078-e1d540ce-65cf-4aef-b810-653b833579b6.png)
-![iPhone 13 Mini_2023-01-20 19:34:54 077412](https://user-images.githubusercontent.com/90010509/213675084-ffb69bbd-7deb-4509-972e-3ed8ad91ed1d.png)
-<img src="$1" width="50%" /><img src="$1" width="50%" />
+- 設定画面でテーマを変更できます。
+- また端末の設定に応じて言語が切り替わります。（英語・日本語に対応）
+
+<img src="https://user-images.githubusercontent.com/90010509/213675084-ffb69bbd-7deb-4509-972e-3ed8ad91ed1d.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213675078-e1d540ce-65cf-4aef-b810-653b833579b6.png" width="50%" />
 
 
 ## ディレクトリ構成
