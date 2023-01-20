@@ -143,3 +143,7 @@ APIから取得したJsonをパースするクラスや、イミュータブル�
 - https://medium.com/flutter-jp/architecture-240d3c56b597
 - https://github.com/lichess-org/mobile
 
+## バージョンに関する補足
+- 最新のurl_launcherが要求するためcompileSdkVersionを33にしています
+- flutter sdkに含まれるflutter_localizationsの依存のため、intlは更新時点の最新でないです
+- 最新のfltter stableのdartバージョンで利用するため、build_runnerは更新時点の最新でないです
