@@ -1,10 +1,8 @@
 # Repo Search
 
-Repo SearchはGithubのリポジトリを検索できるサンプルアプリです。
-
-Riverpodを使ったFlutterアプリの例として参考になれば嬉しいです。
-
-対応プラットフォームはAndroidとiOSです。
+- Repo SearchはGithubのリポジトリを検索できるサンプルアプリです。
+- Riverpodを使ったFlutterアプリの例として参考になれば嬉しいです。
+- 対応プラットフォームはAndroidとiOSです。
 
 https://user-images.githubusercontent.com/90010509/213586464-7354f4a9-ec54-438d-b3c8-163df3cb3903.mp4
 
@@ -19,7 +17,8 @@ GITHUB_ACCESS_TOKEN=取得したアクセストークン
 ```
 
 ### フレーバーに応じた起動
-フレーバーに応じてアプリ名、アイコン等がdev, stg, prod用のものに変わります。また開発中は[devece_preview](https://pub.dev/packages/device_preview)パッケージを有効にする設定があります。フレーバー対応は[こちらの記事](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter)を参考にしています。
+- フレーバーに応じてアプリ名、アイコン等がdev, stg, prod用のものに変わります。また開発中は[devece_preview](https://pub.dev/packages/device_preview)パッケージを有効にする設定があります。
+- フレーバー対応は[こちらの記事](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter)を参考にしています。
 
 VS Codeを使う場合は以下の４つが設定されています。いずれかを選んで起動してください。
 1. repo_search: 開発用の標準
@@ -33,9 +32,9 @@ Android Studioを使う場合は *.vscode/launch.json* を参考に--dart-define
 
 ### Grinderタスク
 
-開発中よく使うコマンドなどをGrinderタスクとして登録しています。[Grinderの解説記事](https://zenn.dev/k9i/articles/bcfa83b08e56d6)
+- 開発中よく使うコマンドなどをGrinderタスクとして登録しています。[Grinderの解説記事](https://zenn.dev/k9i/articles/bcfa83b08e56d6)
+- 登録タスクはgrind -hで確認できます。更新時点のタスク
 
-登録タスクはgrind -hで確認できます。更新時点のタスク
 ```
 Available tasks:
   up                   CocoaPodsのアップデート(パッケージアプデ時に使う)
@@ -44,6 +43,28 @@ Available tasks:
   b                    flutter pub run build_runner build --delete-conflicting-outputs
   gs                   flutter_native_splashでスプラッシュを生成
 ```
+
+## 機能の説明
+主な機能の説明です
+
+### リポジトリ検索
+- 入力したキーワードでGithubのリポジトリを検索します。ページングに対応しています。
+- 右上のアクションボタンを押すと検索条件を変更できます。
+
+<img src="https://user-images.githubusercontent.com/90010509/213673405-31cac64e-9bc2-4699-869d-eb1e63006cf5.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213673807-de021910-1308-46d4-9b48-17a7b020bfeb.png" width="50%" />
+
+### リポジトリ詳細表示
+- 検索結果のItemをタップすることで詳細情報を表示できます。
+- 青色になっている部分はボタンで、種類に応じてブラウザでURLを開きます。
+
+<img src="https://user-images.githubusercontent.com/90010509/213674446-8428c860-4b40-4178-89b4-4724bd7dfa40.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213674441-fa1239eb-d929-49f0-b55d-ef5100cbac89.png" width="50%" />
+
+### 設定
+- 設定画面でテーマを変更できます。
+- また端末の設定に応じて言語が切り替わります。（英語・日本語に対応）
+
+<img src="https://user-images.githubusercontent.com/90010509/213675084-ffb69bbd-7deb-4509-972e-3ed8ad91ed1d.png" width="50%" /><img src="https://user-images.githubusercontent.com/90010509/213675078-e1d540ce-65cf-4aef-b810-653b833579b6.png" width="50%" />
+
 
 ## ディレクトリ構成
 
@@ -119,7 +140,6 @@ APIから取得したJsonをパースするクラスや、イミュータブル�
 
 ## 影響を受けている記事・リポジトリ
 
-https://medium.com/flutter-jp/architecture-240d3c56b597
-
-https://github.com/lichess-org/mobile
+- https://medium.com/flutter-jp/architecture-240d3c56b597
+- https://github.com/lichess-org/mobile
 
