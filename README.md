@@ -1,10 +1,8 @@
 # Repo Search
 
-Repo SearchはGithubのリポジトリを検索できるサンプルアプリです。
-
-Riverpodを使ったFlutterアプリの例として参考になれば嬉しいです。
-
-対応プラットフォームはAndroidとiOSです。
+- Repo SearchはGithubのリポジトリを検索できるサンプルアプリです。
+- Riverpodを使ったFlutterアプリの例として参考になれば嬉しいです。
+- 対応プラットフォームはAndroidとiOSです。
 
 https://user-images.githubusercontent.com/90010509/213586464-7354f4a9-ec54-438d-b3c8-163df3cb3903.mp4
 
@@ -19,7 +17,8 @@ GITHUB_ACCESS_TOKEN=取得したアクセストークン
 ```
 
 ### フレーバーに応じた起動
-フレーバーに応じてアプリ名、アイコン等がdev, stg, prod用のものに変わります。また開発中は[devece_preview](https://pub.dev/packages/device_preview)パッケージを有効にする設定があります。フレーバー対応は[こちらの記事](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter)を参考にしています。
+- フレーバーに応じてアプリ名、アイコン等がdev, stg, prod用のものに変わります。また開発中は[devece_preview](https://pub.dev/packages/device_preview)パッケージを有効にする設定があります。
+- フレーバー対応は[こちらの記事](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter)を参考にしています。
 
 VS Codeを使う場合は以下の４つが設定されています。いずれかを選んで起動してください。
 1. repo_search: 開発用の標準
@@ -33,9 +32,9 @@ Android Studioを使う場合は *.vscode/launch.json* を参考に--dart-define
 
 ### Grinderタスク
 
-開発中よく使うコマンドなどをGrinderタスクとして登録しています。[Grinderの解説記事](https://zenn.dev/k9i/articles/bcfa83b08e56d6)
+- 開発中よく使うコマンドなどをGrinderタスクとして登録しています。[Grinderの解説記事](https://zenn.dev/k9i/articles/bcfa83b08e56d6)
+- 登録タスクはgrind -hで確認できます。更新時点のタスク
 
-登録タスクはgrind -hで確認できます。更新時点のタスク
 ```
 Available tasks:
   up                   CocoaPodsのアップデート(パッケージアプデ時に使う)
@@ -141,7 +140,6 @@ APIから取得したJsonをパースするクラスや、イミュータブル�
 
 ## 影響を受けている記事・リポジトリ
 
-https://medium.com/flutter-jp/architecture-240d3c56b597
-
-https://github.com/lichess-org/mobile
+- https://medium.com/flutter-jp/architecture-240d3c56b597
+- https://github.com/lichess-org/mobile
 
