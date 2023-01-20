@@ -270,6 +270,16 @@ class L10n {
     );
   }
 
+  /// `Best match`
+  String get searchSettingsSortBestMatch {
+    return Intl.message(
+      'Best match',
+      name: 'searchSettingsSortBestMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Forks count`
   String get searchSettingsSortForks {
     return Intl.message(

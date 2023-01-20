@@ -21,6 +21,7 @@
     "searchSettingsOrderAsc": "Ascending",
     "searchSettingsOrderDesc": "Descending",
     "searchSettingsSort": "Sort",
+    "searchSettingsSortBestMatch": "Best match",
     "searchSettingsSortForks": "Forks count",
     "searchSettingsSortHelpWantedIssues": "Help wanted issues count",
     "searchSettingsSortStars": "Stars count",

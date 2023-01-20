@@ -13,12 +13,13 @@ class SearchSettingsState with _$SearchSettingsState {
 }
 
 enum SearchSettingsSort {
+  bestMatch(null),
   stars('stars'),
   forks('forks'),
   helpWantedIssues('help-wanted-issues'),
   updated('updated');
 
-  final String queryParamValue;
+  final String? queryParamValue;
   const SearchSettingsSort(this.queryParamValue);
 }
 

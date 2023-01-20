@@ -58,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchSettingsOrderDesc":
             MessageLookupByLibrary.simpleMessage("Descending"),
         "searchSettingsSort": MessageLookupByLibrary.simpleMessage("Sort"),
+        "searchSettingsSortBestMatch":
+            MessageLookupByLibrary.simpleMessage("Best match"),
         "searchSettingsSortForks":
             MessageLookupByLibrary.simpleMessage("Forks count"),
         "searchSettingsSortHelpWantedIssues":
