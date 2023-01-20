@@ -12,6 +12,10 @@ class SearchSettingsState with _$SearchSettingsState {
   }) = _SearchSettingsState;
 }
 
+/// 以下のAPIのsortパラメーター
+/// https://docs.github.com/ja/rest/search?apiVersion=2022-11-28#search-repositories
+///
+/// indexがSharedPreferenceに保存されているので要素を追加する場合は注意
 enum SearchSettingsSort {
   bestMatch(null),
   stars('stars'),
@@ -23,6 +27,10 @@ enum SearchSettingsSort {
   const SearchSettingsSort(this.queryParamValue);
 }
 
+/// 以下のAPIのorderパラメーター
+/// https://docs.github.com/ja/rest/search?apiVersion=2022-11-28#search-repositories
+///
+/// indexがSharedPreferenceに保存されているので要素を追加する場合は注意
 enum SearchSettingsOrder {
   desc('desc'),
   asc('asc');
