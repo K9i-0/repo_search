@@ -60,6 +60,66 @@ class L10n {
     );
   }
 
+  /// `Request to API server was cancelled`
+  String get dioErrorTypeCancel {
+    return Intl.message(
+      'Request to API server was cancelled',
+      name: 'dioErrorTypeCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection timeout with API server`
+  String get dioErrorTypeConnectTimeout {
+    return Intl.message(
+      'Connection timeout with API server',
+      name: 'dioErrorTypeConnectTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout in connection with API server`
+  String get dioErrorTypeReceiveTimeout {
+    return Intl.message(
+      'Receive timeout in connection with API server',
+      name: 'dioErrorTypeReceiveTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Received invalid status code: {statusCode}`
+  String dioErrorTypeResponse(Object statusCode) {
+    return Intl.message(
+      'Received invalid status code: $statusCode',
+      name: 'dioErrorTypeResponse',
+      desc: '',
+      args: [statusCode],
+    );
+  }
+
+  /// `Send timeout in connection with API server`
+  String get dioErrorTypeSendTimeout {
+    return Intl.message(
+      'Send timeout in connection with API server',
+      name: 'dioErrorTypeSendTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected error occurred`
+  String get dioErrorTypeUnknown {
+    return Intl.message(
+      'Unexpected error occurred',
+      name: 'dioErrorTypeUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get githubRepoDescription {
     return Intl.message(

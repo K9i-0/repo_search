@@ -1,5 +1,11 @@
 {
     "appTitle": "りぽさーち",
+    "dioErrorTypeCancel": "リクエストがキャンセルされました",
+    "dioErrorTypeConnectTimeout": "接続がタイムアウトしました",
+    "dioErrorTypeReceiveTimeout": "レスポンスがタイムアウトしました",
+    "dioErrorTypeResponse": "ステータスコードが不正です: {statusCode}",
+    "dioErrorTypeSendTimeout": "リクエストがタイムアウトしました",
+    "dioErrorTypeUnknown": "不明なエラーが発生しました",
     "githubRepoDescription": "説明",
     "githubRepoDescriptionEmpty": "説明がありません",
     "githubRepoFork": "Fork数",

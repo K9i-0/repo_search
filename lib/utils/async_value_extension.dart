@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:repo_search/common/dio_error_resolver.dart';
 
 extension AsyncValueX<T> on AsyncValue<T> {
   /// guard関数の拡張版
@@ -58,7 +59,7 @@ extension AsyncValueX<T> on AsyncValue<T> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            error.toString(),
+            resolveDioError(error!, context),
           ),
         ),
       );

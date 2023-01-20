@@ -20,11 +20,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(updatedAt) => "Updated at ${updatedAt}";
+  static String m0(statusCode) => "Received invalid status code: ${statusCode}";
+
+  static String m1(updatedAt) => "Updated at ${updatedAt}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Repo Search"),
+        "dioErrorTypeCancel": MessageLookupByLibrary.simpleMessage(
+            "Request to API server was cancelled"),
+        "dioErrorTypeConnectTimeout": MessageLookupByLibrary.simpleMessage(
+            "Connection timeout with API server"),
+        "dioErrorTypeReceiveTimeout": MessageLookupByLibrary.simpleMessage(
+            "Receive timeout in connection with API server"),
+        "dioErrorTypeResponse": m0,
+        "dioErrorTypeSendTimeout": MessageLookupByLibrary.simpleMessage(
+            "Send timeout in connection with API server"),
+        "dioErrorTypeUnknown":
+            MessageLookupByLibrary.simpleMessage("Unexpected error occurred"),
         "githubRepoDescription":
             MessageLookupByLibrary.simpleMessage("Description"),
         "githubRepoDescriptionEmpty":
@@ -45,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "githubRepoUpdatedAt":
             MessageLookupByLibrary.simpleMessage("Updated at"),
         "githubRepoWatch": MessageLookupByLibrary.simpleMessage("Watch"),
-        "repoUpdatedAt": m0,
+        "repoUpdatedAt": m1,
         "searchBarHint":
             MessageLookupByLibrary.simpleMessage("search keywords"),
         "searchKeywordsEmpty": MessageLookupByLibrary.simpleMessage(

@@ -20,11 +20,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ja';
 
-  static String m0(updatedAt) => "${updatedAt}に更新";
+  static String m0(statusCode) => "ステータスコードが不正です: ${statusCode}";
+
+  static String m1(updatedAt) => "${updatedAt}に更新";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("りぽさーち"),
+        "dioErrorTypeCancel":
+            MessageLookupByLibrary.simpleMessage("リクエストがキャンセルされました"),
+        "dioErrorTypeConnectTimeout":
+            MessageLookupByLibrary.simpleMessage("接続がタイムアウトしました"),
+        "dioErrorTypeReceiveTimeout":
+            MessageLookupByLibrary.simpleMessage("レスポンスがタイムアウトしました"),
+        "dioErrorTypeResponse": m0,
+        "dioErrorTypeSendTimeout":
+            MessageLookupByLibrary.simpleMessage("リクエストがタイムアウトしました"),
+        "dioErrorTypeUnknown":
+            MessageLookupByLibrary.simpleMessage("不明なエラーが発生しました"),
         "githubRepoDescription": MessageLookupByLibrary.simpleMessage("説明"),
         "githubRepoDescriptionEmpty":
             MessageLookupByLibrary.simpleMessage("説明がありません"),
@@ -40,7 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "githubRepoTopics": MessageLookupByLibrary.simpleMessage("トピック"),
         "githubRepoUpdatedAt": MessageLookupByLibrary.simpleMessage("更新日時"),
         "githubRepoWatch": MessageLookupByLibrary.simpleMessage("Watch数"),
-        "repoUpdatedAt": m0,
+        "repoUpdatedAt": m1,
         "searchBarHint": MessageLookupByLibrary.simpleMessage("キーワードで検索"),
         "searchKeywordsEmpty":
             MessageLookupByLibrary.simpleMessage("検索キーワードを入力してください"),
