@@ -1,5 +1,11 @@
 {
     "appTitle": "Repo Search",
+    "dioErrorTypeCancel": "Request to API server was cancelled",
+    "dioErrorTypeConnectTimeout": "Connection timeout with API server",
+    "dioErrorTypeReceiveTimeout": "Receive timeout in connection with API server",
+    "dioErrorTypeResponse": "Received invalid status code: {statusCode}",
+    "dioErrorTypeSendTimeout": "Send timeout in connection with API server",
+    "dioErrorTypeUnknown": "Unexpected error occurred",
     "githubRepoDescription": "Description",
     "githubRepoDescriptionEmpty": "No description",
     "githubRepoFork": "Fork",

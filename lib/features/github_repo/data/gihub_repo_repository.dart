@@ -25,6 +25,7 @@ class GithubRepoRepository {
     required SearchSettingsSort sort,
     required SearchSettingsOrder order,
     required int page,
+    CancelToken? cancelToken,
   }) async {
     final uri = Uri(
       scheme: 'https',
@@ -45,8 +46,14 @@ class GithubRepoRepository {
           'Accept': 'application/vnd.github.v3+json',
           'Authorization': 'token $token',
           'X-GitHub-Api-Version': '2022-11-28',
+          // Dioのバグで、User-Agentを設定しないと403が返ってくる
+          // このUser-Agentは特に意味は無い
+          //
+          // https://github.com/flutterchina/dio/issues/1487
+          'User-Agent': 'repo_search',
         },
       ),
+      cancelToken: cancelToken,
     );
 
     return SearchReposResult.fromJson(response.data);

@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:repo_search/common/dio_error_resolver.dart';
 import 'package:repo_search/features/github_repo/model/github_repo.dart';
 import 'package:repo_search/features/github_repo/model/github_repo_list_state.dart';
 import 'package:repo_search/features/github_repo/ui/github_repo_detail_screen.dart';
@@ -106,7 +107,8 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
                     ),
                     error: (error, stackTrace) => CommonMessageView(
                       icon: Icons.warning,
-                      message: error.toString(),
+                      // DIOのエラーの場合は、エラーメッセージを表示する
+                      message: resolveDioError(error, context),
                     ),
                   ),
             ),

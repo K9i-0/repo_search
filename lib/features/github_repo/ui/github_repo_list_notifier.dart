@@ -5,6 +5,7 @@ import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart
 import 'package:repo_search/features/github_repo/model/github_repo_list_state.dart';
 import 'package:repo_search/features/github_repo/ui/search_settings_notifier.dart';
 import 'package:repo_search/utils/async_value_extension.dart';
+import 'package:repo_search/utils/ref_extension.dart';
 
 final githubRepoListProviderFamily = AutoDisposeAsyncNotifierProviderFamily<
     GithubRepoListNotifier, GithubRepoListState, String>(
@@ -18,6 +19,7 @@ class GithubRepoListNotifier
   @override
   FutureOr<GithubRepoListState> build(String arg) async {
     _searchKeywords = arg;
+    final cancelToken = ref.cancelToken();
 
     final result = await ref.watch(githubRepoRepositoryProvider).searchRepos(
           searchKeywords: _searchKeywords,
@@ -26,6 +28,7 @@ class GithubRepoListNotifier
           order:
               ref.watch(searchSettingsProvider.select((value) => value.order)),
           page: 1,
+          cancelToken: cancelToken,
         );
     // キャッシュする
     ref.keepAlive();
@@ -57,11 +60,13 @@ class GithubRepoListNotifier
 
     state = await state.guardPlus(
       () async {
+        final cancelToken = ref.cancelToken();
         final next = await ref.read(githubRepoRepositoryProvider).searchRepos(
               searchKeywords: _searchKeywords,
               sort: ref.read(searchSettingsProvider).sort,
               order: ref.read(searchSettingsProvider).order,
               page: value.page + 1,
+              cancelToken: cancelToken,
             );
 
         final items = [...value.items, ...next.items];
