@@ -17,6 +17,7 @@ final watchersCountFutureProviderFamily =
   final result = await ref.watch(githubRepoRepositoryProvider).getWatchersCount(
         repositoryUrl: repositoryUrl,
       );
+  // 成功時にキャッシュする
   ref.keepAlive();
   return result;
 });
@@ -49,6 +50,8 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
               ),
             ),
             const Gap(16),
+            // オーナー名とリポジトリ名
+            // 改行が入ってもいい感じに表示するためにRichTextを使っている
             RichText(
               text: TextSpan(
                 children: [
@@ -103,6 +106,7 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
                     icon: const Icon(Icons.remove_red_eye),
                     label: watchersCountAsync.when(
                       data: (data) => Text(countFormat.format(data)),
+                      // スペースが無いのと致命的でないので、エラー表示は最小限にしている
                       error: (error, stackTrace) => const Text('Error'),
                       loading: () => const Center(
                         child: SizedBox(
@@ -153,8 +157,10 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
               updatedAtFormatter.format(githubRepo.updatedAt),
             ),
             const Gap(16),
+            // トピックがある場合のみ表示
             if (githubRepo.topics.isNotEmpty)
               SectionTitle(title: context.l10n.githubRepoTopics),
+            // Wrapを使ってさまざまな端末で見たときに、トピックが折り返されるようにしている
             Wrap(
               spacing: 8,
               children: githubRepo.topics
@@ -185,6 +191,8 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
   }
 }
 
+/// セクションのタイトル
+/// 他でも使うならwidgetsに移動する
 class SectionTitle extends StatelessWidget {
   final String title;
   const SectionTitle({required this.title, super.key});

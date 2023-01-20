@@ -20,6 +20,7 @@ import 'package:repo_search/widgets/common_message_view.dart';
 import 'package:repo_search/widgets/common_sheet.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+/// Githubリポジトリ検索画面
 class GithubRepoSearchScreen extends HookConsumerWidget {
   const GithubRepoSearchScreen({super.key});
 
@@ -28,10 +29,14 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
     final searchController = useTextEditingController(text: 'flutter');
     // 検索キーワードに変化があった時リビルドさせる
     useListenable(searchController);
+    // 検索結果を監視して、エラーがあればスナックバーを表示する
     ref.listen(
       githubRepoListProviderFamily(searchController.text),
       (_, state) {
-        state.showSnackbarOnError(context);
+        state.showSnackbarOnError(
+          context,
+          skipHasNotValue: true,
+        );
       },
     );
 
@@ -44,6 +49,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
           ],
         ),
         actions: [
+          // 検索設定を変更するためのシートを表示するボタン
           IconButton(
             icon: const Icon(Icons.tune),
             onPressed: () async {
@@ -65,6 +71,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
               ref.invalidate(searchSettingsProvider);
             },
           ),
+          // 設定画面へ遷移するボタン
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () => Navigator.push(
@@ -80,7 +87,9 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
       ),
       body: Column(
         children: [
+          // 検索バー
           SearchBar(controller: searchController),
+          // キーワードが空の場合はメッセージを表示する
           if (searchController.text.isEmpty)
             Expanded(
               child: CommonMessageView(
@@ -95,7 +104,8 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
                   .whenPlus(
                     data: (data, hasError) => Content(
                       data: data,
-                      hasError: hasError,
+                      // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
+                      showEndItem: data.hasMore && !hasError,
                       onScrollEnd: () => ref
                           .read(githubRepoListProviderFamily(
                                   searchController.text)
@@ -118,15 +128,19 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
   }
 }
 
+/// データがある場合のWidget
+/// [data] 検索結果のデータ
+/// [showEndItem] 最後の要素に達したことを検知するためのWidgetを表示するかどうか
+/// [onScrollEnd] 最後の要素に達したことを検知するためのWidgetが表示された時に呼ばれるコールバック
 class Content extends HookConsumerWidget {
   const Content({
     required this.data,
-    required this.hasError,
+    required this.showEndItem,
     required this.onScrollEnd,
     super.key,
   });
   final GithubRepoListState data;
-  final bool hasError;
+  final bool showEndItem;
   final VoidCallback onScrollEnd;
 
   @override
@@ -137,8 +151,6 @@ class Content extends HookConsumerWidget {
         message: context.l10n.searchResultEmpty,
       );
     }
-    // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
-    final showEndItem = data.hasMore && !hasError;
 
     return ListView.builder(
       itemCount: data.items.length + (showEndItem ? 1 : 0),
@@ -169,6 +181,8 @@ class Content extends HookConsumerWidget {
   }
 }
 
+/// 検索結果のリストの各要素のWidget
+/// [githubRepo] 検索結果の各要素のデータ
 class GithubRepoItem extends HookConsumerWidget {
   const GithubRepoItem({
     required this.githubRepo,
@@ -178,7 +192,9 @@ class GithubRepoItem extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 日付のフォーマッター、言語によってフォーマットが変わる
     final updatedAtFormatter = DateFormat.yMMMd();
+    // スター数のフォーマッター、言語によってフォーマットが変わる
     final stargazersCountFormatter = NumberFormat.compact();
 
     return InkWell(

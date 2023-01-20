@@ -49,7 +49,7 @@ extension AsyncValueX<T> on AsyncValue<T> {
   /// ページングの1ページ目でエラー時には表示しない場合などに使用する
   void showSnackbarOnError(
     BuildContext context, {
-    bool skipHasNotValue = true,
+    bool skipHasNotValue = false,
   }) {
     if (skipHasNotValue && !hasValue) {
       return;

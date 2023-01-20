@@ -30,11 +30,12 @@ class GithubRepoListNotifier
           page: 1,
           cancelToken: cancelToken,
         );
-    // キャッシュする
+    // 成功時にキャッシュする
     ref.keepAlive();
 
     return GithubRepoListState(
       items: result.items,
+      // item数がtotalCountより少ない時は次のページがある
       hasMore: result.items.length < result.totalCount,
       page: 1,
     );
@@ -68,10 +69,13 @@ class GithubRepoListNotifier
               page: value.page + 1,
               cancelToken: cancelToken,
             );
+        // 成功時にキャッシュする
+        ref.keepAlive();
 
         final items = [...value.items, ...next.items];
         return value.copyWith(
           items: items,
+          // item数がtotalCountより少ない時は次のページがある
           hasMore: items.length < next.totalCount,
           page: value.page + 1,
         );

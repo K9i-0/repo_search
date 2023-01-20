@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-/// 汎用空表示Widget
+/// エラーや空表示などのメッセージを表示するためのWidget
 class CommonMessageView extends StatelessWidget {
   final IconData? icon;
   final String message;
