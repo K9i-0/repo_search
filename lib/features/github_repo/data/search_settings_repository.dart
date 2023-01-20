@@ -16,7 +16,7 @@ class SearchSettingsRepository {
         .getInt(SharedPreferencesKeys.searchSettingsSort.name);
 
     if (sortIndex == null) {
-      return SearchSettingsSort.stars;
+      return SearchSettingsSort.bestMatch;
     }
     return SearchSettingsSort.values[sortIndex];
   }

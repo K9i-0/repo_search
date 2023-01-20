@@ -9,6 +9,8 @@ import 'package:repo_search/utils/build_context_extension.dart';
 extension _L10nX on L10n {
   String sort(SearchSettingsSort sort) {
     switch (sort) {
+      case SearchSettingsSort.bestMatch:
+        return searchSettingsSortBestMatch;
       case SearchSettingsSort.stars:
         return searchSettingsSortStars;
       case SearchSettingsSort.forks:

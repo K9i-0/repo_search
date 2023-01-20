@@ -21,6 +21,7 @@
     "searchSettingsOrderAsc": "昇順",
     "searchSettingsOrderDesc": "降順",
     "searchSettingsSort": "並び替え",
+    "searchSettingsSortBestMatch": "ベストマッチ",
     "searchSettingsSortForks": "Fork数",
     "searchSettingsSortHelpWantedIssues": "助けが必要なIssue数",
     "searchSettingsSortStars": "Star数",
