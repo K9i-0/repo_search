@@ -27,3 +27,12 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    todo: ignore
+    # https://pub.dev/packages/freezed#disabling-invalid_annotation_target-warning-and-warning-in-generates-files
+    invalid_annotation_target: ignore

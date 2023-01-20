@@ -1,0 +1,93 @@
+// DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
+// This is a library that provides messages for a en locale. All the
+// messages from the main program should be duplicated here with the same
+// function name.
+
+// Ignore issues from commonly used lints in this file.
+// ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
+// ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
+// ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+
+import 'package:intl/intl.dart';
+import 'package:intl/message_lookup_by_library.dart';
+
+final messages = new MessageLookup();
+
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
+
+class MessageLookup extends MessageLookupByLibrary {
+  String get localeName => 'en';
+
+  static String m0(statusCode) => "Received invalid status code: ${statusCode}";
+
+  static String m1(updatedAt) => "Updated at ${updatedAt}";
+
+  final messages = _notInlinedMessages(_notInlinedMessages);
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "appTitle": MessageLookupByLibrary.simpleMessage("Repo Search"),
+        "dioErrorTypeCancel": MessageLookupByLibrary.simpleMessage(
+            "Request to API server was cancelled"),
+        "dioErrorTypeConnectTimeout": MessageLookupByLibrary.simpleMessage(
+            "Connection timeout with API server"),
+        "dioErrorTypeReceiveTimeout": MessageLookupByLibrary.simpleMessage(
+            "Receive timeout in connection with API server"),
+        "dioErrorTypeResponse": m0,
+        "dioErrorTypeSendTimeout": MessageLookupByLibrary.simpleMessage(
+            "Send timeout in connection with API server"),
+        "dioErrorTypeUnknown":
+            MessageLookupByLibrary.simpleMessage("Unexpected error occurred"),
+        "githubRepoDescription":
+            MessageLookupByLibrary.simpleMessage("Description"),
+        "githubRepoDescriptionEmpty":
+            MessageLookupByLibrary.simpleMessage("No description"),
+        "githubRepoFork": MessageLookupByLibrary.simpleMessage("Fork"),
+        "githubRepoFullName":
+            MessageLookupByLibrary.simpleMessage("Repository Name"),
+        "githubRepoLanguage": MessageLookupByLibrary.simpleMessage("Language"),
+        "githubRepoLanguageEmpty":
+            MessageLookupByLibrary.simpleMessage("No language specified"),
+        "githubRepoLicense": MessageLookupByLibrary.simpleMessage("License"),
+        "githubRepoLicenseEmpty":
+            MessageLookupByLibrary.simpleMessage("No license specified"),
+        "githubRepoOpenIssues":
+            MessageLookupByLibrary.simpleMessage("Open Issues"),
+        "githubRepoStar": MessageLookupByLibrary.simpleMessage("Star"),
+        "githubRepoTopics": MessageLookupByLibrary.simpleMessage("Topics"),
+        "githubRepoUpdatedAt":
+            MessageLookupByLibrary.simpleMessage("Updated at"),
+        "githubRepoWatch": MessageLookupByLibrary.simpleMessage("Watch"),
+        "repoUpdatedAt": m1,
+        "searchBarHint":
+            MessageLookupByLibrary.simpleMessage("search keywords"),
+        "searchKeywordsEmpty": MessageLookupByLibrary.simpleMessage(
+            "Please enter search keywords"),
+        "searchResultEmpty": MessageLookupByLibrary.simpleMessage(
+            "No results.\nPlease change the search keywords."),
+        "searchSettingsOrder": MessageLookupByLibrary.simpleMessage("Order"),
+        "searchSettingsOrderAsc":
+            MessageLookupByLibrary.simpleMessage("Ascending"),
+        "searchSettingsOrderDesc":
+            MessageLookupByLibrary.simpleMessage("Descending"),
+        "searchSettingsSort": MessageLookupByLibrary.simpleMessage("Sort"),
+        "searchSettingsSortBestMatch":
+            MessageLookupByLibrary.simpleMessage("Best match"),
+        "searchSettingsSortForks":
+            MessageLookupByLibrary.simpleMessage("Forks count"),
+        "searchSettingsSortHelpWantedIssues":
+            MessageLookupByLibrary.simpleMessage("Help wanted issues count"),
+        "searchSettingsSortStars":
+            MessageLookupByLibrary.simpleMessage("Stars count"),
+        "searchSettingsSortUpdated":
+            MessageLookupByLibrary.simpleMessage("Updated time"),
+        "searchSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("Search Settings"),
+        "settingsTheme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "settingsThemeDark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "settingsThemeLight": MessageLookupByLibrary.simpleMessage("Light"),
+        "settingsThemeSystem":
+            MessageLookupByLibrary.simpleMessage("System default"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings")
+      };
+}
