@@ -4,6 +4,9 @@ import 'package:repo_search/features/settings/ui/settings_notifier.dart';
 import 'package:repo_search/resource/assets.gen.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 
+/// 設定画面
+///
+/// アプリ全体に関する設定を行う
 class SettingsScreen extends HookConsumerWidget {
   const SettingsScreen({super.key});
 
