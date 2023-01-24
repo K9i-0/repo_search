@@ -1,469 +1,362 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'intl/messages_all.dart';
+/// GENERATED CODE - DO NOT MODIFY BY HAND
+import 'dart:async';
 
-// **************************************************************************
-// Generator: Flutter Intl IDE plugin
-// Made by Localizely
-// **************************************************************************
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart' as intl;
 
-// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
-// ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
-// ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
+import 'l10n_en.dart';
+import 'l10n_ja.dart';
 
-class L10n {
-  L10n();
+/// Callers can lookup localized strings with an instance of L10n
+/// returned by `L10n.of(context)`.
+///
+/// Applications need to include `L10n.delegate()` in their app's
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
+///
+/// ```dart
+/// import 'generated/l10n.dart';
+///
+/// return MaterialApp(
+///   localizationsDelegates: L10n.localizationsDelegates,
+///   supportedLocales: L10n.supportedLocales,
+///   home: MyApplicationHome(),
+/// );
+/// ```
+///
+/// ## Update pubspec.yaml
+///
+/// Please make sure to update your pubspec.yaml to include the following
+/// packages:
+///
+/// ```yaml
+/// dependencies:
+///   # Internationalization support.
+///   flutter_localizations:
+///     sdk: flutter
+///   intl: any # Use the pinned version from flutter_localizations
+///
+///   # Rest of dependencies
+/// ```
+///
+/// ## iOS Applications
+///
+/// iOS applications define key application metadata, including supported
+/// locales, in an Info.plist file that is built into the application bundle.
+/// To configure the locales supported by your app, you’ll need to edit this
+/// file.
+///
+/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
+/// Then, in the Project Navigator, open the Info.plist file under the Runner
+/// project’s Runner folder.
+///
+/// Next, select the Information Property List item, select Add Item from the
+/// Editor menu, then select Localizations from the pop-up menu.
+///
+/// Select and expand the newly-created Localizations item then, for each
+/// locale your application supports, add a new item and select the locale
+/// you wish to add from the pop-up menu in the Value field. This list should
+/// be consistent with the languages listed in the L10n.supportedLocales
+/// property.
+abstract class L10n {
+  L10n(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
-  static L10n? _current;
-
-  static L10n get current {
-    assert(_current != null,
-        'No instance of L10n was loaded. Try to initialize the L10n delegate before accessing L10n.current.');
-    return _current!;
-  }
-
-  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
-
-  static Future<L10n> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name);
-    return initializeMessages(localeName).then((_) {
-      Intl.defaultLocale = localeName;
-      final instance = L10n();
-      L10n._current = instance;
-
-      return instance;
-    });
-  }
+  final String localeName;
 
   static L10n of(BuildContext context) {
-    final instance = L10n.maybeOf(context);
-    assert(instance != null,
-        'No instance of L10n present in the widget tree. Did you add L10n.delegate in localizationsDelegates?');
-    return instance!;
+    return Localizations.of<L10n>(context, L10n)!;
   }
 
-  static L10n? maybeOf(BuildContext context) {
-    return Localizations.of<L10n>(context, L10n);
-  }
+  static const LocalizationsDelegate<L10n> delegate = _L10nDelegate();
 
-  /// `Repo Search`
-  String get appTitle {
-    return Intl.message(
-      'Repo Search',
-      name: 'appTitle',
-      desc: '',
-      args: [],
-    );
-  }
+  /// A list of this localizations delegate along with the default localizations
+  /// delegates.
+  ///
+  /// Returns a list of localizations delegates containing this delegate along with
+  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
+  /// and GlobalWidgetsLocalizations.delegate.
+  ///
+  /// Additional delegates can be added by appending to this list in
+  /// MaterialApp. This list does not have to be used at all if a custom list
+  /// of delegates is preferred or required.
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
-  /// `Request to API server was cancelled`
-  String get dioErrorTypeCancel {
-    return Intl.message(
-      'Request to API server was cancelled',
-      name: 'dioErrorTypeCancel',
-      desc: '',
-      args: [],
-    );
-  }
+  /// A list of this localizations delegate's supported locales.
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('ja')
+  ];
 
-  /// `Connection timeout with API server`
-  String get dioErrorTypeConnectTimeout {
-    return Intl.message(
-      'Connection timeout with API server',
-      name: 'dioErrorTypeConnectTimeout',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @appTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Repo Search'**
+  String get appTitle;
 
-  /// `Receive timeout in connection with API server`
-  String get dioErrorTypeReceiveTimeout {
-    return Intl.message(
-      'Receive timeout in connection with API server',
-      name: 'dioErrorTypeReceiveTimeout',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @dioErrorTypeCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Request to API server was cancelled'**
+  String get dioErrorTypeCancel;
 
-  /// `Received invalid status code: {statusCode}`
-  String dioErrorTypeResponse(Object statusCode) {
-    return Intl.message(
-      'Received invalid status code: $statusCode',
-      name: 'dioErrorTypeResponse',
-      desc: '',
-      args: [statusCode],
-    );
-  }
+  /// No description provided for @dioErrorTypeConnectTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timeout with API server'**
+  String get dioErrorTypeConnectTimeout;
 
-  /// `Send timeout in connection with API server`
-  String get dioErrorTypeSendTimeout {
-    return Intl.message(
-      'Send timeout in connection with API server',
-      name: 'dioErrorTypeSendTimeout',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @dioErrorTypeReceiveTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive timeout in connection with API server'**
+  String get dioErrorTypeReceiveTimeout;
 
-  /// `Unexpected error occurred`
-  String get dioErrorTypeUnknown {
-    return Intl.message(
-      'Unexpected error occurred',
-      name: 'dioErrorTypeUnknown',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @dioErrorTypeResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Received invalid status code: {statusCode}'**
+  String dioErrorTypeResponse(Object statusCode);
 
-  /// `Description`
-  String get githubRepoDescription {
-    return Intl.message(
-      'Description',
-      name: 'githubRepoDescription',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @dioErrorTypeSendTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Send timeout in connection with API server'**
+  String get dioErrorTypeSendTimeout;
 
-  /// `No description`
-  String get githubRepoDescriptionEmpty {
-    return Intl.message(
-      'No description',
-      name: 'githubRepoDescriptionEmpty',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @dioErrorTypeUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error occurred'**
+  String get dioErrorTypeUnknown;
 
-  /// `Fork`
-  String get githubRepoFork {
-    return Intl.message(
-      'Fork',
-      name: 'githubRepoFork',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get githubRepoDescription;
 
-  /// `Repository Name`
-  String get githubRepoFullName {
-    return Intl.message(
-      'Repository Name',
-      name: 'githubRepoFullName',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoDescriptionEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No description'**
+  String get githubRepoDescriptionEmpty;
 
-  /// `Language`
-  String get githubRepoLanguage {
-    return Intl.message(
-      'Language',
-      name: 'githubRepoLanguage',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoFork.
+  ///
+  /// In en, this message translates to:
+  /// **'Fork'**
+  String get githubRepoFork;
 
-  /// `No language specified`
-  String get githubRepoLanguageEmpty {
-    return Intl.message(
-      'No language specified',
-      name: 'githubRepoLanguageEmpty',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Repository Name'**
+  String get githubRepoFullName;
 
-  /// `License`
-  String get githubRepoLicense {
-    return Intl.message(
-      'License',
-      name: 'githubRepoLicense',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get githubRepoLanguage;
 
-  /// `No license specified`
-  String get githubRepoLicenseEmpty {
-    return Intl.message(
-      'No license specified',
-      name: 'githubRepoLicenseEmpty',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoLanguageEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No language specified'**
+  String get githubRepoLanguageEmpty;
 
-  /// `Open Issues`
-  String get githubRepoOpenIssues {
-    return Intl.message(
-      'Open Issues',
-      name: 'githubRepoOpenIssues',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoLicense.
+  ///
+  /// In en, this message translates to:
+  /// **'License'**
+  String get githubRepoLicense;
 
-  /// `Star`
-  String get githubRepoStar {
-    return Intl.message(
-      'Star',
-      name: 'githubRepoStar',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoLicenseEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No license specified'**
+  String get githubRepoLicenseEmpty;
 
-  /// `Topics`
-  String get githubRepoTopics {
-    return Intl.message(
-      'Topics',
-      name: 'githubRepoTopics',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoOpenIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Issues'**
+  String get githubRepoOpenIssues;
 
-  /// `Updated at`
-  String get githubRepoUpdatedAt {
-    return Intl.message(
-      'Updated at',
-      name: 'githubRepoUpdatedAt',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoStar.
+  ///
+  /// In en, this message translates to:
+  /// **'Star'**
+  String get githubRepoStar;
 
-  /// `Watch`
-  String get githubRepoWatch {
-    return Intl.message(
-      'Watch',
-      name: 'githubRepoWatch',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics'**
+  String get githubRepoTopics;
 
-  /// `Updated at {updatedAt}`
-  String repoUpdatedAt(Object updatedAt) {
-    return Intl.message(
-      'Updated at $updatedAt',
-      name: 'repoUpdatedAt',
-      desc: '',
-      args: [updatedAt],
-    );
-  }
+  /// No description provided for @githubRepoUpdatedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated at'**
+  String get githubRepoUpdatedAt;
 
-  /// `search keywords`
-  String get searchBarHint {
-    return Intl.message(
-      'search keywords',
-      name: 'searchBarHint',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @githubRepoWatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch'**
+  String get githubRepoWatch;
 
-  /// `Please enter search keywords`
-  String get searchKeywordsEmpty {
-    return Intl.message(
-      'Please enter search keywords',
-      name: 'searchKeywordsEmpty',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @repoUpdatedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated at {updatedAt}'**
+  String repoUpdatedAt(String updatedAt);
 
-  /// `No results.\nPlease change the search keywords.`
-  String get searchResultEmpty {
-    return Intl.message(
-      'No results.\nPlease change the search keywords.',
-      name: 'searchResultEmpty',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchBarHint.
+  ///
+  /// In en, this message translates to:
+  /// **'search keywords'**
+  String get searchBarHint;
 
-  /// `Order`
-  String get searchSettingsOrder {
-    return Intl.message(
-      'Order',
-      name: 'searchSettingsOrder',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchKeywordsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter search keywords'**
+  String get searchKeywordsEmpty;
 
-  /// `Ascending`
-  String get searchSettingsOrderAsc {
-    return Intl.message(
-      'Ascending',
-      name: 'searchSettingsOrderAsc',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchResultEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No results.\nPlease change the search keywords.'**
+  String get searchResultEmpty;
 
-  /// `Descending`
-  String get searchSettingsOrderDesc {
-    return Intl.message(
-      'Descending',
-      name: 'searchSettingsOrderDesc',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get searchSettingsOrder;
 
-  /// `Sort`
-  String get searchSettingsSort {
-    return Intl.message(
-      'Sort',
-      name: 'searchSettingsSort',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsOrderAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Ascending'**
+  String get searchSettingsOrderAsc;
 
-  /// `Best match`
-  String get searchSettingsSortBestMatch {
-    return Intl.message(
-      'Best match',
-      name: 'searchSettingsSortBestMatch',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsOrderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Descending'**
+  String get searchSettingsOrderDesc;
 
-  /// `Forks count`
-  String get searchSettingsSortForks {
-    return Intl.message(
-      'Forks count',
-      name: 'searchSettingsSortForks',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsSort.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort'**
+  String get searchSettingsSort;
 
-  /// `Help wanted issues count`
-  String get searchSettingsSortHelpWantedIssues {
-    return Intl.message(
-      'Help wanted issues count',
-      name: 'searchSettingsSortHelpWantedIssues',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsSortBestMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Best match'**
+  String get searchSettingsSortBestMatch;
 
-  /// `Stars count`
-  String get searchSettingsSortStars {
-    return Intl.message(
-      'Stars count',
-      name: 'searchSettingsSortStars',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsSortForks.
+  ///
+  /// In en, this message translates to:
+  /// **'Forks count'**
+  String get searchSettingsSortForks;
 
-  /// `Updated time`
-  String get searchSettingsSortUpdated {
-    return Intl.message(
-      'Updated time',
-      name: 'searchSettingsSortUpdated',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsSortHelpWantedIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'Help wanted issues count'**
+  String get searchSettingsSortHelpWantedIssues;
 
-  /// `Search Settings`
-  String get searchSettingsTitle {
-    return Intl.message(
-      'Search Settings',
-      name: 'searchSettingsTitle',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsSortStars.
+  ///
+  /// In en, this message translates to:
+  /// **'Stars count'**
+  String get searchSettingsSortStars;
 
-  /// `Theme`
-  String get settingsTheme {
-    return Intl.message(
-      'Theme',
-      name: 'settingsTheme',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsSortUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated time'**
+  String get searchSettingsSortUpdated;
 
-  /// `Dark`
-  String get settingsThemeDark {
-    return Intl.message(
-      'Dark',
-      name: 'settingsThemeDark',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @searchSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Settings'**
+  String get searchSettingsTitle;
 
-  /// `Light`
-  String get settingsThemeLight {
-    return Intl.message(
-      'Light',
-      name: 'settingsThemeLight',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @settingsTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get settingsTheme;
 
-  /// `System default`
-  String get settingsThemeSystem {
-    return Intl.message(
-      'System default',
-      name: 'settingsThemeSystem',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @settingsThemeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get settingsThemeDark;
 
-  /// `Settings`
-  String get settingsTitle {
-    return Intl.message(
-      'Settings',
-      name: 'settingsTitle',
-      desc: '',
-      args: [],
-    );
-  }
+  /// No description provided for @settingsThemeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get settingsThemeLight;
+
+  /// No description provided for @settingsThemeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System default'**
+  String get settingsThemeSystem;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
 }
 
-class AppLocalizationDelegate extends LocalizationsDelegate<L10n> {
-  const AppLocalizationDelegate();
+class _L10nDelegate extends LocalizationsDelegate<L10n> {
+  const _L10nDelegate();
 
-  List<Locale> get supportedLocales {
-    return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'ja'),
-    ];
+  @override
+  Future<L10n> load(Locale locale) {
+    return SynchronousFuture<L10n>(lookupL10n(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => _isSupported(locale);
-  @override
-  Future<L10n> load(Locale locale) => L10n.load(locale);
-  @override
-  bool shouldReload(AppLocalizationDelegate old) => false;
+  bool isSupported(Locale locale) => <String>['en', 'ja'].contains(locale.languageCode);
 
-  bool _isSupported(Locale locale) {
-    for (var supportedLocale in supportedLocales) {
-      if (supportedLocale.languageCode == locale.languageCode) {
-        return true;
-      }
-    }
-    return false;
+  @override
+  bool shouldReload(_L10nDelegate old) => false;
+}
+
+L10n lookupL10n(Locale locale) {
+
+
+  // Lookup logic when only language code is specified.
+  switch (locale.languageCode) {
+    case 'en': return L10nEn();
+    case 'ja': return L10nJa();
   }
+
+  throw FlutterError(
+    'L10n.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }
