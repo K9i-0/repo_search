@@ -122,7 +122,7 @@ providerの置き場所に関して、シンプルなデータ取得ならFuture
 
 ### hooks_riverpod、flutter_hooks
 
-状態管理、DIに[Riverpod](https://docs-v2.riverpod.dev/)をflutter_hooksと合わせて使っています。
+状態管理、サービスロケーターに[Riverpod](https://docs-v2.riverpod.dev/)をflutter_hooksと合わせて使っています。
 コード生成は現状生成待ちのデメリットが大きいと判断して使っていません。
 
 公式がStateNotifierProviderより（Async）NotifierProviderをお勧めしているのでそうしています。
