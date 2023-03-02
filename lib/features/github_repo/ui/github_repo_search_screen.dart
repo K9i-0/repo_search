@@ -102,15 +102,21 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
               child: ref
                   .watch(githubRepoListProviderFamily(searchController.text))
                   .whenPlus(
-                    data: (data, hasError) => Content(
-                      data: data,
-                      // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
-                      showEndItem: data.hasMore && !hasError,
-                      onScrollEnd: () => ref
-                          .read(githubRepoListProviderFamily(
-                                  searchController.text)
-                              .notifier)
-                          .loadNext(),
+                    data: (data, hasError) => RefreshIndicator(
+                      onRefresh: () => ref.refresh(
+                        githubRepoListProviderFamily(searchController.text)
+                            .future,
+                      ),
+                      child: Content(
+                        data: data,
+                        // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
+                        showEndItem: data.hasMore && !hasError,
+                        onScrollEnd: () => ref
+                            .read(githubRepoListProviderFamily(
+                                    searchController.text)
+                                .notifier)
+                            .loadNext(),
+                      ),
                     ),
                     loading: () => const Center(
                       child: CircularProgressIndicator(),
