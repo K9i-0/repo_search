@@ -182,11 +182,13 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Could not launch $url'),
-        ),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Could not launch $url'),
+          ),
+        );
+      }
     }
   }
 }
