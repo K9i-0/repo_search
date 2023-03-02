@@ -85,50 +85,52 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          // 検索バー
-          SearchBar(controller: searchController),
-          // キーワードが空の場合はメッセージを表示する
-          if (searchController.text.isEmpty)
-            Expanded(
-              child: CommonMessageView(
-                icon: Icons.search,
-                message: context.l10n.searchKeywordsEmpty,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // 検索バー
+            SearchBar(controller: searchController),
+            // キーワードが空の場合はメッセージを表示する
+            if (searchController.text.isEmpty)
+              Expanded(
+                child: CommonMessageView(
+                  icon: Icons.search,
+                  message: context.l10n.searchKeywordsEmpty,
+                ),
               ),
-            ),
-          if (searchController.text.isNotEmpty)
-            Expanded(
-              child: ref
-                  .watch(githubRepoListProviderFamily(searchController.text))
-                  .whenPlus(
-                    data: (data, hasError) => RefreshIndicator(
-                      onRefresh: () => ref.refresh(
-                        githubRepoListProviderFamily(searchController.text)
-                            .future,
+            if (searchController.text.isNotEmpty)
+              Expanded(
+                child: ref
+                    .watch(githubRepoListProviderFamily(searchController.text))
+                    .whenPlus(
+                      data: (data, hasError) => RefreshIndicator(
+                        onRefresh: () => ref.refresh(
+                          githubRepoListProviderFamily(searchController.text)
+                              .future,
+                        ),
+                        child: Content(
+                          data: data,
+                          // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
+                          showEndItem: data.hasMore && !hasError,
+                          onScrollEnd: () => ref
+                              .read(githubRepoListProviderFamily(
+                                      searchController.text)
+                                  .notifier)
+                              .loadNext(),
+                        ),
                       ),
-                      child: Content(
-                        data: data,
-                        // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
-                        showEndItem: data.hasMore && !hasError,
-                        onScrollEnd: () => ref
-                            .read(githubRepoListProviderFamily(
-                                    searchController.text)
-                                .notifier)
-                            .loadNext(),
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      error: (error, stackTrace) => CommonMessageView(
+                        icon: Icons.warning,
+                        // DIOのエラーの場合は、エラーメッセージを表示する
+                        message: resolveDioError(error, context),
                       ),
                     ),
-                    loading: () => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    error: (error, stackTrace) => CommonMessageView(
-                      icon: Icons.warning,
-                      // DIOのエラーの場合は、エラーメッセージを表示する
-                      message: resolveDioError(error, context),
-                    ),
-                  ),
-            ),
-        ],
+              ),
+          ],
+        ),
       ),
     );
   }
