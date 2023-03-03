@@ -16,6 +16,10 @@ Githubの個人アクセストークンを取得して設定する必要があ�
 GITHUB_ACCESS_TOKEN=取得したアクセストークン
 ```
 
+スコープはpublic_repoを選択してください。
+![SCR-20230303-boc](https://user-images.githubusercontent.com/90010509/222586897-07e45c2f-99f4-44cf-baad-2f7ed321a985.png)
+
+
 ### フレーバーに応じた起動
 - フレーバーに応じてアプリ名、アイコン等がdev, stg, prod用のものに変わります。また開発中は[devece_preview](https://pub.dev/packages/device_preview)パッケージを有効にする設定があります。
 - フレーバー対応は[こちらの記事](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter)を参考にしています。
@@ -122,7 +126,7 @@ providerの置き場所に関して、シンプルなデータ取得ならFuture
 
 ### hooks_riverpod、flutter_hooks
 
-状態管理、DIに[Riverpod](https://docs-v2.riverpod.dev/)をflutter_hooksと合わせて使っています。
+状態管理、サービスロケーターに[Riverpod](https://docs-v2.riverpod.dev/)をflutter_hooksと合わせて使っています。
 コード生成は現状生成待ちのデメリットが大きいと判断して使っていません。
 
 公式がStateNotifierProviderより（Async）NotifierProviderをお勧めしているのでそうしています。

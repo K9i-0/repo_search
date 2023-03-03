@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
 
 /// 検索バー
-class SearchBar extends HookConsumerWidget {
+class SearchBar extends StatelessWidget {
   const SearchBar({
     required this.controller,
     super.key,
@@ -11,7 +10,7 @@ class SearchBar extends HookConsumerWidget {
   final TextEditingController controller;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return SizedBox(
       height: 70,
       child: Center(

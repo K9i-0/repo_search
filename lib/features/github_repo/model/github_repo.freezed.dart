@@ -20,6 +20,7 @@ GithubRepo _$GithubRepoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GithubRepo {
+  int get id => throw _privateConstructorUsedError;
   String get name =>
       throw _privateConstructorUsedError; // fullNameはownerとnameが結合されている
   String get fullName => throw _privateConstructorUsedError;
@@ -48,7 +49,8 @@ abstract class $GithubRepoCopyWith<$Res> {
       _$GithubRepoCopyWithImpl<$Res, GithubRepo>;
   @useResult
   $Res call(
-      {String name,
+      {int id,
+      String name,
       String fullName,
       String? description,
       int stargazersCount,
@@ -79,6 +81,7 @@ class _$GithubRepoCopyWithImpl<$Res, $Val extends GithubRepo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? fullName = null,
     Object? description = freezed,
@@ -94,6 +97,10 @@ class _$GithubRepoCopyWithImpl<$Res, $Val extends GithubRepo>
     Object? license = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -179,7 +186,8 @@ abstract class _$$_GithubRepoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
+      {int id,
+      String name,
       String fullName,
       String? description,
       int stargazersCount,
@@ -210,6 +218,7 @@ class __$$_GithubRepoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? fullName = null,
     Object? description = freezed,
@@ -225,6 +234,10 @@ class __$$_GithubRepoCopyWithImpl<$Res>
     Object? license = freezed,
   }) {
     return _then(_$_GithubRepo(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -286,7 +299,8 @@ class __$$_GithubRepoCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
   const _$_GithubRepo(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.fullName,
       required this.description,
       required this.stargazersCount,
@@ -304,6 +318,8 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
   factory _$_GithubRepo.fromJson(Map<String, dynamic> json) =>
       _$$_GithubRepoFromJson(json);
 
+  @override
+  final int id;
   @override
   final String name;
 // fullNameはownerとnameが結合されている
@@ -340,7 +356,7 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GithubRepo(name: $name, fullName: $fullName, description: $description, stargazersCount: $stargazersCount, url: $url, htmlUrl: $htmlUrl, forksCount: $forksCount, openIssuesCount: $openIssuesCount, topics: $topics, updatedAt: $updatedAt, language: $language, owner: $owner, license: $license)';
+    return 'GithubRepo(id: $id, name: $name, fullName: $fullName, description: $description, stargazersCount: $stargazersCount, url: $url, htmlUrl: $htmlUrl, forksCount: $forksCount, openIssuesCount: $openIssuesCount, topics: $topics, updatedAt: $updatedAt, language: $language, owner: $owner, license: $license)';
   }
 
   @override
@@ -348,6 +364,7 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'GithubRepo'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('fullName', fullName))
       ..add(DiagnosticsProperty('description', description))
@@ -368,6 +385,7 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GithubRepo &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
@@ -394,6 +412,7 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       name,
       fullName,
       description,
@@ -424,7 +443,8 @@ class _$_GithubRepo with DiagnosticableTreeMixin implements _GithubRepo {
 
 abstract class _GithubRepo implements GithubRepo {
   const factory _GithubRepo(
-      {required final String name,
+      {required final int id,
+      required final String name,
       required final String fullName,
       required final String? description,
       required final int stargazersCount,
@@ -441,6 +461,8 @@ abstract class _GithubRepo implements GithubRepo {
   factory _GithubRepo.fromJson(Map<String, dynamic> json) =
       _$_GithubRepo.fromJson;
 
+  @override
+  int get id;
   @override
   String get name;
   @override // fullNameはownerとnameが結合されている

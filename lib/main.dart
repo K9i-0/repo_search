@@ -1,7 +1,6 @@
 import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/common/shared_preferences.dart';
@@ -37,27 +36,22 @@ Future<void> main() async {
           ),
         ],
         // DevicePreviewでサポートしてない言語が出なくなる
-        availableLocales: L10n.delegate.supportedLocales,
+        availableLocales: L10n.supportedLocales,
         builder: (context) => const MyApp(),
       ),
     ),
   );
 }
 
-class MyApp extends HookConsumerWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       onGenerateTitle: (context) => context.l10n.appTitle,
-      localizationsDelegates: const [
-        L10n.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: L10n.delegate.supportedLocales,
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
       // useInheritedMediaQuery、locale、builderは、DevicePreviewに必要
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),

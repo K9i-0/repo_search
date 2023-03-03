@@ -11,6 +11,7 @@ part 'github_repo.g.dart';
 class GithubRepo with _$GithubRepo {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory GithubRepo({
+    required int id,
     required String name,
     // fullNameはownerとnameが結合されている
     required String fullName,

@@ -85,44 +85,52 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          // 検索バー
-          SearchBar(controller: searchController),
-          // キーワードが空の場合はメッセージを表示する
-          if (searchController.text.isEmpty)
-            Expanded(
-              child: CommonMessageView(
-                icon: Icons.search,
-                message: context.l10n.searchKeywordsEmpty,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // 検索バー
+            SearchBar(controller: searchController),
+            // キーワードが空の場合はメッセージを表示する
+            if (searchController.text.isEmpty)
+              Expanded(
+                child: CommonMessageView(
+                  icon: Icons.search,
+                  message: context.l10n.searchKeywordsEmpty,
+                ),
               ),
-            ),
-          if (searchController.text.isNotEmpty)
-            Expanded(
-              child: ref
-                  .watch(githubRepoListProviderFamily(searchController.text))
-                  .whenPlus(
-                    data: (data, hasError) => Content(
-                      data: data,
-                      // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
-                      showEndItem: data.hasMore && !hasError,
-                      onScrollEnd: () => ref
-                          .read(githubRepoListProviderFamily(
-                                  searchController.text)
-                              .notifier)
-                          .loadNext(),
+            if (searchController.text.isNotEmpty)
+              Expanded(
+                child: ref
+                    .watch(githubRepoListProviderFamily(searchController.text))
+                    .whenPlus(
+                      data: (data, hasError) => RefreshIndicator(
+                        onRefresh: () => ref.refresh(
+                          githubRepoListProviderFamily(searchController.text)
+                              .future,
+                        ),
+                        child: Content(
+                          data: data,
+                          // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
+                          showEndItem: data.hasMore && !hasError,
+                          onScrollEnd: () => ref
+                              .read(githubRepoListProviderFamily(
+                                      searchController.text)
+                                  .notifier)
+                              .loadNext(),
+                        ),
+                      ),
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      error: (error, stackTrace) => CommonMessageView(
+                        icon: Icons.warning,
+                        // DIOのエラーの場合は、エラーメッセージを表示する
+                        message: resolveDioError(error, context),
+                      ),
                     ),
-                    loading: () => const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    error: (error, stackTrace) => CommonMessageView(
-                      icon: Icons.warning,
-                      // DIOのエラーの場合は、エラーメッセージを表示する
-                      message: resolveDioError(error, context),
-                    ),
-                  ),
-            ),
-        ],
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -132,7 +140,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
 /// [data] 検索結果のデータ
 /// [showEndItem] 最後の要素に達したことを検知するためのWidgetを表示するかどうか
 /// [onScrollEnd] 最後の要素に達したことを検知するためのWidgetが表示された時に呼ばれるコールバック
-class Content extends HookConsumerWidget {
+class Content extends StatelessWidget {
   const Content({
     required this.data,
     required this.showEndItem,
@@ -144,7 +152,7 @@ class Content extends HookConsumerWidget {
   final VoidCallback onScrollEnd;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // 検索結果が空の場合のメッセージを表示する
     if (data.items.isEmpty) {
       return CommonMessageView(
@@ -174,6 +182,7 @@ class Content extends HookConsumerWidget {
         }
 
         return GithubRepoItem(
+          key: Key(data.items[index].id.toString()),
           githubRepo: data.items[index],
         );
       },
@@ -183,7 +192,7 @@ class Content extends HookConsumerWidget {
 
 /// 検索結果のリストの各要素のWidget
 /// [githubRepo] 検索結果の各要素のデータ
-class GithubRepoItem extends HookConsumerWidget {
+class GithubRepoItem extends StatelessWidget {
   const GithubRepoItem({
     required this.githubRepo,
     super.key,
@@ -191,7 +200,7 @@ class GithubRepoItem extends HookConsumerWidget {
   final GithubRepo githubRepo;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // 日付のフォーマッター、言語によってフォーマットが変わる
     final updatedAtFormatter = DateFormat.yMMMd();
     // スター数のフォーマッター、言語によってフォーマットが変わる
