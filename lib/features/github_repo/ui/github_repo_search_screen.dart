@@ -182,6 +182,7 @@ class Content extends StatelessWidget {
         }
 
         return GithubRepoItem(
+          key: Key(data.items[index].id.toString()),
           githubRepo: data.items[index],
         );
       },

@@ -71,6 +71,7 @@ dev_dependencies:
   mockito: ^5.3.2
   custom_lint: ^0.2.12
   riverpod_lint: ^1.1.2
+  flutter_gen: ^5.2.0
 
 dependency_overrides:
   image: ^4.0.15

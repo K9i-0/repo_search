@@ -8,6 +8,7 @@ part of 'github_repo.dart';
 
 _$_GithubRepo _$$_GithubRepoFromJson(Map<String, dynamic> json) =>
     _$_GithubRepo(
+      id: json['id'] as int,
       name: json['name'] as String,
       fullName: json['full_name'] as String,
       description: json['description'] as String?,
@@ -28,6 +29,7 @@ _$_GithubRepo _$$_GithubRepoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_GithubRepoToJson(_$_GithubRepo instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'full_name': instance.fullName,
       'description': instance.description,
