@@ -22,7 +22,7 @@ final watchersCountFutureProviderFamily =
   return result;
 });
 
-class GithubRepoDetailScreen extends HookConsumerWidget {
+class GithubRepoDetailScreen extends ConsumerWidget {
   final GithubRepo githubRepo;
   const GithubRepoDetailScreen({required this.githubRepo, super.key});
 

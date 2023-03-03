@@ -140,7 +140,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
 /// [data] 検索結果のデータ
 /// [showEndItem] 最後の要素に達したことを検知するためのWidgetを表示するかどうか
 /// [onScrollEnd] 最後の要素に達したことを検知するためのWidgetが表示された時に呼ばれるコールバック
-class Content extends HookConsumerWidget {
+class Content extends StatelessWidget {
   const Content({
     required this.data,
     required this.showEndItem,
@@ -152,7 +152,7 @@ class Content extends HookConsumerWidget {
   final VoidCallback onScrollEnd;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // 検索結果が空の場合のメッセージを表示する
     if (data.items.isEmpty) {
       return CommonMessageView(
@@ -191,7 +191,7 @@ class Content extends HookConsumerWidget {
 
 /// 検索結果のリストの各要素のWidget
 /// [githubRepo] 検索結果の各要素のデータ
-class GithubRepoItem extends HookConsumerWidget {
+class GithubRepoItem extends StatelessWidget {
   const GithubRepoItem({
     required this.githubRepo,
     super.key,
@@ -199,7 +199,7 @@ class GithubRepoItem extends HookConsumerWidget {
   final GithubRepo githubRepo;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // 日付のフォーマッター、言語によってフォーマットが変わる
     final updatedAtFormatter = DateFormat.yMMMd();
     // スター数のフォーマッター、言語によってフォーマットが変わる

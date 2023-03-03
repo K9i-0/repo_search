@@ -43,7 +43,7 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends HookConsumerWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
