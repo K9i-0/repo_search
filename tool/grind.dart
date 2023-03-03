@@ -22,6 +22,11 @@ void b() {
   _runCommand(command: 'flutter pub run build_runner build -d');
 }
 
+@Task('flutter pub run build_runner watch')
+void w() {
+  _runCommand(command: 'flutter pub run build_runner watch');
+}
+
 @Task('CocoaPodsのアップデート(パッケージアプデ時に使う)')
 void up() {
   run(

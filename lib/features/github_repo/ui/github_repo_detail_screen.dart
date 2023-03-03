@@ -22,7 +22,7 @@ final watchersCountFutureProviderFamily =
   return result;
 });
 
-class GithubRepoDetailScreen extends HookConsumerWidget {
+class GithubRepoDetailScreen extends ConsumerWidget {
   final GithubRepo githubRepo;
   const GithubRepoDetailScreen({required this.githubRepo, super.key});
 
@@ -182,11 +182,13 @@ class GithubRepoDetailScreen extends HookConsumerWidget {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Could not launch $url'),
-        ),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Could not launch $url'),
+          ),
+        );
+      }
     }
   }
 }

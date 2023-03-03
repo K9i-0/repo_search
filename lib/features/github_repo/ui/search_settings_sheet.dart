@@ -33,7 +33,7 @@ extension _L10nX on L10n {
 }
 
 /// 検索設定シート
-class SearchSettingsSheet extends HookConsumerWidget {
+class SearchSettingsSheet extends ConsumerWidget {
   const SearchSettingsSheet({
     super.key,
   });

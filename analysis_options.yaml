@@ -29,6 +29,8 @@ linter:
 # https://dart.dev/guides/language/analysis-options
 
 analyzer:
+  plugins:
+    - custom_lint
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"

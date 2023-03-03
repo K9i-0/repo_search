@@ -20,6 +20,8 @@ class GithubRepoListNotifier
   FutureOr<GithubRepoListState> build(String arg) async {
     _searchKeywords = arg;
     final cancelToken = ref.cancelToken();
+    // キー入力ごとに検索が実行されるのでDebounce処理を行う
+    await ref.debounce();
 
     final result = await ref.watch(githubRepoRepositoryProvider).searchRepos(
           searchKeywords: _searchKeywords,
