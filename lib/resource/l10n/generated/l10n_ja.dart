@@ -1,10 +1,14 @@
 /// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: always_use_package_imports
 
 import 'l10n.dart';
 
 /// The translations for Japanese (`ja`).
 class L10nJa extends L10n {
   L10nJa([String locale = 'ja']) : super(locale);
+
+  @override
+  String get a => 'a';
 
   @override
   String get appTitle => 'りぽさーち';
@@ -19,7 +23,7 @@ class L10nJa extends L10n {
   String get dioErrorTypeReceiveTimeout => 'レスポンスがタイムアウトしました';
 
   @override
-  String dioErrorTypeResponse(Object statusCode) {
+  String dioErrorTypeResponse(String statusCode) {
     return 'ステータスコードが不正です: $statusCode';
   }
 
@@ -126,4 +130,7 @@ class L10nJa extends L10n {
 
   @override
   String get settingsTitle => '設定';
+
+  @override
+  String get test => 'test';
 }

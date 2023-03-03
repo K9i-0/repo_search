@@ -1,4 +1,5 @@
 /// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: always_use_package_imports
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -94,6 +95,12 @@ abstract class L10n {
     Locale('ja')
   ];
 
+  /// No description provided for @a.
+  ///
+  /// In en, this message translates to:
+  /// **'a'**
+  String get a;
+
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
@@ -122,7 +129,7 @@ abstract class L10n {
   ///
   /// In en, this message translates to:
   /// **'Received invalid status code: {statusCode}'**
-  String dioErrorTypeResponse(Object statusCode);
+  String dioErrorTypeResponse(String statusCode);
 
   /// No description provided for @dioErrorTypeSendTimeout.
   ///
@@ -327,6 +334,12 @@ abstract class L10n {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsTitle;
+
+  /// No description provided for @test.
+  ///
+  /// In en, this message translates to:
+  /// **'test'**
+  String get test;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

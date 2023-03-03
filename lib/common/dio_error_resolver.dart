@@ -16,7 +16,8 @@ String resolveDioError(Object error, BuildContext context) {
       case DioErrorType.receiveTimeout:
         return l10n.dioErrorTypeReceiveTimeout;
       case DioErrorType.response:
-        return l10n.dioErrorTypeResponse(error.response?.statusCode ?? '-');
+        return l10n
+            .dioErrorTypeResponse(error.response?.statusCode.toString() ?? '-');
       case DioErrorType.sendTimeout:
         return l10n.dioErrorTypeSendTimeout;
     }

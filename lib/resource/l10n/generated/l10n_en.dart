@@ -1,10 +1,14 @@
 /// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: always_use_package_imports
 
 import 'l10n.dart';
 
 /// The translations for English (`en`).
 class L10nEn extends L10n {
   L10nEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get a => 'a';
 
   @override
   String get appTitle => 'Repo Search';
@@ -19,7 +23,7 @@ class L10nEn extends L10n {
   String get dioErrorTypeReceiveTimeout => 'Receive timeout in connection with API server';
 
   @override
-  String dioErrorTypeResponse(Object statusCode) {
+  String dioErrorTypeResponse(String statusCode) {
     return 'Received invalid status code: $statusCode';
   }
 
@@ -126,4 +130,7 @@ class L10nEn extends L10n {
 
   @override
   String get settingsTitle => 'Settings';
+
+  @override
+  String get test => 'test';
 }

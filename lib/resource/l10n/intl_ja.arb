@@ -1,4 +1,19 @@
 {
+    "@@locale": "ja",
+    "@dioErrorTypeResponse": {
+        "placeholders": {
+            "statusCode": {
+                "type": "String"
+            }
+        }
+    },
+    "@repoUpdatedAt": {
+        "placeholders": {
+            "updatedAt": {
+                "type": "String"
+            }
+        }
+    },
     "appTitle": "りぽさーち",
     "dioErrorTypeCancel": "リクエストがキャンセルされました",
     "dioErrorTypeConnectTimeout": "接続がタイムアウトしました",

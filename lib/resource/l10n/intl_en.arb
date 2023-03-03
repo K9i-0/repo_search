@@ -1,16 +1,25 @@
 {
+    "@@locale": "en",
+    "@dioErrorTypeResponse": {
+        "placeholders": {
+            "statusCode": {
+                "type": "String"
+            }
+        }
+    },
+    "@repoUpdatedAt": {
+        "placeholders": {
+            "updatedAt": {
+                "type": "String"
+            }
+        }
+    },
+    "a": "a",
     "appTitle": "Repo Search",
     "dioErrorTypeCancel": "Request to API server was cancelled",
     "dioErrorTypeConnectTimeout": "Connection timeout with API server",
     "dioErrorTypeReceiveTimeout": "Receive timeout in connection with API server",
     "dioErrorTypeResponse": "Received invalid status code: {statusCode}",
-    "@dioErrorTypeResponse": {
-      "placeholders": {
-        "statusCode": {
-          "type": "Object"
-        }
-      }
-    },
     "dioErrorTypeSendTimeout": "Send timeout in connection with API server",
     "dioErrorTypeUnknown": "Unexpected error occurred",
     "githubRepoDescription": "Description",
@@ -27,13 +36,6 @@
     "githubRepoUpdatedAt": "Updated at",
     "githubRepoWatch": "Watch",
     "repoUpdatedAt": "Updated at {updatedAt}",
-    "@repoUpdatedAt": {
-      "placeholders": {
-        "updatedAt": {
-          "type": "String"
-        }
-      }
-    },
     "searchBarHint": "search keywords",
     "searchKeywordsEmpty": "Please enter search keywords",
     "searchResultEmpty": "No results.\nPlease change the search keywords.",
@@ -51,5 +53,6 @@
     "settingsThemeDark": "Dark",
     "settingsThemeLight": "Light",
     "settingsThemeSystem": "System default",
-    "settingsTitle": "Settings"
+    "settingsTitle": "Settings",
+    "test": "test"
 }

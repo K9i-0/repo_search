@@ -53,7 +53,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
           IconButton(
             icon: const Icon(Icons.tune),
             onPressed: () async {
-              await showCommonSheet(
+              await showCommonSheet<void>(
                 context: context,
                 title: context.l10n.searchSettingsTitle,
                 // シートを閉じるまで再検索しないために、シート内で別のProviderScopeを使う
@@ -166,7 +166,7 @@ class Content extends StatelessWidget {
         // 最後の要素に達したら次のページを読み込む
         if (index == data.items.length) {
           return VisibilityDetector(
-            key: const Key("GithubRepoSearchScreen"),
+            key: const Key('GithubRepoSearchScreen'),
             onVisibilityChanged: (info) {
               if (info.visibleFraction > 0.1) {
                 onScrollEnd();
