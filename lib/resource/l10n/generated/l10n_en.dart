@@ -8,9 +8,6 @@ class L10nEn extends L10n {
   L10nEn([String locale = 'en']) : super(locale);
 
   @override
-  String get a => 'a';
-
-  @override
   String get appTitle => 'Repo Search';
 
   @override
@@ -130,7 +127,4 @@ class L10nEn extends L10n {
 
   @override
   String get settingsTitle => 'Settings';
-
-  @override
-  String get test => 'test';
 }

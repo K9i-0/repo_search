@@ -8,9 +8,6 @@ class L10nJa extends L10n {
   L10nJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get a => 'a';
-
-  @override
   String get appTitle => 'りぽさーち';
 
   @override
@@ -130,7 +127,4 @@ class L10nJa extends L10n {
 
   @override
   String get settingsTitle => '設定';
-
-  @override
-  String get test => 'test';
 }

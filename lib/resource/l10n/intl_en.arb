@@ -14,7 +14,6 @@
             }
         }
     },
-    "a": "a",
     "appTitle": "Repo Search",
     "dioErrorTypeCancel": "Request to API server was cancelled",
     "dioErrorTypeConnectTimeout": "Connection timeout with API server",
@@ -53,6 +52,5 @@
     "settingsThemeDark": "Dark",
     "settingsThemeLight": "Light",
     "settingsThemeSystem": "System default",
-    "settingsTitle": "Settings",
-    "test": "test"
+    "settingsTitle": "Settings"
 }

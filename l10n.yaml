@@ -5,4 +5,5 @@ output-class: L10n
 output-dir: lib/resource/l10n/generated
 output-localization-file: l10n.dart
 nullable-getter: false
+untranslated-messages-file: desiredFileName.txt
 header: "/// GENERATED CODE - DO NOT MODIFY BY HAND\n// ignore_for_file: always_use_package_imports"
