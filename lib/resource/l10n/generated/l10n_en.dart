@@ -1,4 +1,5 @@
 /// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: always_use_package_imports
 
 import 'l10n.dart';
 
@@ -19,7 +20,7 @@ class L10nEn extends L10n {
   String get dioErrorTypeReceiveTimeout => 'Receive timeout in connection with API server';
 
   @override
-  String dioErrorTypeResponse(Object statusCode) {
+  String dioErrorTypeResponse(String statusCode) {
     return 'Received invalid status code: $statusCode';
   }
 

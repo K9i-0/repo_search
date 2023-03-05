@@ -1,4 +1,5 @@
 /// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: always_use_package_imports
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -122,7 +123,7 @@ abstract class L10n {
   ///
   /// In en, this message translates to:
   /// **'Received invalid status code: {statusCode}'**
-  String dioErrorTypeResponse(Object statusCode);
+  String dioErrorTypeResponse(String statusCode);
 
   /// No description provided for @dioErrorTypeSendTimeout.
   ///

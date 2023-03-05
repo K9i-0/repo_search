@@ -1,4 +1,5 @@
 /// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: always_use_package_imports
 
 import 'l10n.dart';
 
@@ -19,7 +20,7 @@ class L10nJa extends L10n {
   String get dioErrorTypeReceiveTimeout => 'レスポンスがタイムアウトしました';
 
   @override
-  String dioErrorTypeResponse(Object statusCode) {
+  String dioErrorTypeResponse(String statusCode) {
     return 'ステータスコードが不正です: $statusCode';
   }
 

@@ -39,7 +39,7 @@ class GithubRepoRepository {
       },
     );
 
-    final response = await dio.getUri(
+    final response = await dio.getUri<Map<String, dynamic>>(
       uri,
       options: Options(
         headers: {
@@ -56,7 +56,7 @@ class GithubRepoRepository {
       cancelToken: cancelToken,
     );
 
-    return SearchReposResult.fromJson(response.data);
+    return SearchReposResult.fromJson(response.data!);
   }
 
   /// Search repositoriesで取得できるwatchers_countは、正確で無いのでsubscribers_countを取得する
@@ -66,7 +66,7 @@ class GithubRepoRepository {
   Future<int> getWatchersCount({
     required String repositoryUrl,
   }) async {
-    final response = await dio.get(
+    final response = await dio.get<Map<String, dynamic>>(
       repositoryUrl,
       options: Options(
         headers: {
@@ -77,6 +77,6 @@ class GithubRepoRepository {
       ),
     );
 
-    return response.data['subscribers_count'];
+    return response.data!['subscribers_count'] as int;
   }
 }
