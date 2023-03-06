@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/shared_preferences.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final settingsRepositoryProvider = Provider<SettingsRepository>(
-  (ref) => SettingsRepository(ref),
-);
+part 'settings_repository.g.dart';
+
+@Riverpod(keepAlive: true)
+SettingsRepository settingsRepository(SettingsRepositoryRef ref) =>
+    SettingsRepository(ref);
 
 class SettingsRepository {
   final Ref _ref;

@@ -1,0 +1,13 @@
+# https://gist.github.com/mono0926/c5e263e985da233b39f76270ed6bc588
+targets:
+  $default:
+    builders:
+      # 他の指定は省略
+      source_gen|combining_builder:
+        options:
+          ignore_for_file:
+          - type=lint
+          - implicit_dynamic_parameter
+          - implicit_dynamic_type
+          - implicit_dynamic_method
+          - strict_raw_type

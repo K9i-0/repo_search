@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
 import 'package:repo_search/features/github_repo/model/search_settings_state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final githubRepoRepositoryProvider = Provider<GithubRepoRepository>(
-  (ref) => GithubRepoRepository(
-    token: ref.watch(githubAccessTokenProvider),
-  ),
-);
+part 'gihub_repo_repository.g.dart';
+
+// ignore: provider_dependencies
+@Riverpod(keepAlive: true, dependencies: [githubAccessToken])
+GithubRepoRepository githubRepoRepository(GithubRepoRepositoryRef ref) =>
+    GithubRepoRepository(
+      token: ref.watch(githubAccessTokenProvider),
+    );
 
 class GithubRepoRepository {
   GithubRepoRepository({
@@ -39,7 +42,7 @@ class GithubRepoRepository {
       },
     );
 
-    final response = await dio.getUri(
+    final response = await dio.getUri<Map<String, dynamic>>(
       uri,
       options: Options(
         headers: {
@@ -56,7 +59,7 @@ class GithubRepoRepository {
       cancelToken: cancelToken,
     );
 
-    return SearchReposResult.fromJson(response.data);
+    return SearchReposResult.fromJson(response.data!);
   }
 
   /// Search repositoriesで取得できるwatchers_countは、正確で無いのでsubscribers_countを取得する
@@ -66,7 +69,7 @@ class GithubRepoRepository {
   Future<int> getWatchersCount({
     required String repositoryUrl,
   }) async {
-    final response = await dio.get(
+    final response = await dio.get<Map<String, dynamic>>(
       repositoryUrl,
       options: Options(
         headers: {
@@ -77,6 +80,6 @@ class GithubRepoRepository {
       ),
     );
 
-    return response.data['subscribers_count'];
+    return response.data!['subscribers_count'] as int;
   }
 }

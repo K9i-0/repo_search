@@ -1,21 +1,17 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/features/github_repo/data/search_settings_repository.dart';
 import 'package:repo_search/features/github_repo/model/search_settings_state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final searchSettingsProvider =
-    NotifierProvider<SearchSettingNotifier, SearchSettingsState>(
-  () => SearchSettingNotifier(),
-);
+part 'search_settings_notifier.g.dart';
 
 /// 検索設定を管理するNotifier
-class SearchSettingNotifier extends Notifier<SearchSettingsState> {
+@Riverpod(keepAlive: true)
+class SearchSettings extends _$SearchSettings {
   @override
-  SearchSettingsState build() {
-    return SearchSettingsState(
-      sort: ref.watch(searchSettingsRepositoryProvider).sort,
-      order: ref.watch(searchSettingsRepositoryProvider).order,
-    );
-  }
+  SearchSettingsState build() => SearchSettingsState(
+        sort: ref.watch(searchSettingsRepositoryProvider).sort,
+        order: ref.watch(searchSettingsRepositoryProvider).order,
+      );
 
   Future<void> setSort(SearchSettingsSort sort) async {
     await ref.read(searchSettingsRepositoryProvider).setSort(sort);

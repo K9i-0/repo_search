@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/features/settings/data/settings_repository.dart';
 import 'package:repo_search/features/settings/model/settings_state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final settingsProvider = NotifierProvider<SettingsNotifier, SettingsState>(
-  () => SettingsNotifier(),
-);
+part 'settings_notifier.g.dart';
 
 /// アプリの設定を管理するNotifier
-class SettingsNotifier extends Notifier<SettingsState> {
+@Riverpod(keepAlive: true)
+class Settings extends _$Settings {
   @override
   SettingsState build() {
     return SettingsState(
