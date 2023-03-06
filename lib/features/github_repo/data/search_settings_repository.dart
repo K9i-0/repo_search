@@ -1,10 +1,14 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/shared_preferences.dart';
 import 'package:repo_search/features/github_repo/model/search_settings_state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final searchSettingsRepositoryProvider = Provider<SearchSettingsRepository>(
-  (ref) => SearchSettingsRepository(ref),
-);
+part 'search_settings_repository.g.dart';
+
+@Riverpod(keepAlive: true)
+SearchSettingsRepository searchSettingsRepository(
+        SearchSettingsRepositoryRef ref) =>
+    SearchSettingsRepository(ref);
 
 class SearchSettingsRepository {
   final Ref _ref;

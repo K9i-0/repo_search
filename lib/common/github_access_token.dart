@@ -1,6 +1,7 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final githubAccessTokenProvider = Provider<String>(
-  // main.dartで初期化する
-  (ref) => throw UnimplementedError(),
-);
+part 'github_access_token.g.dart';
+
+@Riverpod(keepAlive: true)
+String githubAccessToken(GithubAccessTokenRef ref) =>
+    throw UnimplementedError();

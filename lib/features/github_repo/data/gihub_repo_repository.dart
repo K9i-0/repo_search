@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/features/github_repo/model/search_repos_result.dart';
 import 'package:repo_search/features/github_repo/model/search_settings_state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final githubRepoRepositoryProvider = Provider<GithubRepoRepository>(
-  (ref) => GithubRepoRepository(
-    token: ref.watch(githubAccessTokenProvider),
-  ),
-);
+part 'gihub_repo_repository.g.dart';
+
+// ignore: provider_dependencies
+@Riverpod(keepAlive: true, dependencies: [githubAccessToken])
+GithubRepoRepository githubRepoRepository(GithubRepoRepositoryRef ref) =>
+    GithubRepoRepository(
+      token: ref.watch(githubAccessTokenProvider),
+    );
 
 class GithubRepoRepository {
   GithubRepoRepository({
