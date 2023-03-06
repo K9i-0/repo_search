@@ -31,7 +31,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
     useListenable(searchController);
     // 検索結果を監視して、エラーがあればスナックバーを表示する
     ref.listen(
-      githubRepoListProviderFamily(searchController.text),
+      githubRepoListProvider(searchController.text),
       (_, state) {
         state.showSnackbarOnError(
           context,
@@ -59,8 +59,10 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
                 // シートを閉じるまで再検索しないために、シート内で別のProviderScopeを使う
                 builder: (context) => ProviderScope(
                   overrides: [
+                    // 特殊な使い方をしてるので、lintを無視する
+                    // ignore: scoped_providers_should_specify_dependencies
                     searchSettingsProvider.overrideWith(
-                      () => SearchSettingNotifier(),
+                      () => SearchSettings(),
                     ),
                   ],
                   child: const SearchSettingsSheet(),
@@ -101,21 +103,20 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
             if (searchController.text.isNotEmpty)
               Expanded(
                 child: ref
-                    .watch(githubRepoListProviderFamily(searchController.text))
+                    .watch(githubRepoListProvider(searchController.text))
                     .whenPlus(
                       data: (data, hasError) => RefreshIndicator(
                         onRefresh: () => ref.refresh(
-                          githubRepoListProviderFamily(searchController.text)
-                              .future,
+                          githubRepoListProvider(searchController.text).future,
                         ),
                         child: Content(
                           data: data,
                           // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
                           showEndItem: data.hasMore && !hasError,
                           onScrollEnd: () => ref
-                              .read(githubRepoListProviderFamily(
-                                      searchController.text)
-                                  .notifier)
+                              .read(
+                                  githubRepoListProvider(searchController.text)
+                                      .notifier)
                               .loadNext(),
                         ),
                       ),

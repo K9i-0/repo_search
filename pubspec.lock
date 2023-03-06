@@ -829,6 +829,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.1"
+  riverpod_annotation:
+    dependency: "direct main"
+    description:
+      name: riverpod_annotation
+      sha256: "8f39f568860637c6ca5842fbcc175e5e222269f0f8d6f40472d26772d7d563ba"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  riverpod_generator:
+    dependency: "direct dev"
+    description:
+      name: riverpod_generator
+      sha256: d7265eac04bad1febff3776b72ac72ec8d0e86efe6b30dc0585899f670bcd26c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   riverpod_lint:
     dependency: "direct dev"
     description:
@@ -1211,5 +1227,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.19.3 <3.0.0"
+  dart: ">=2.19.2 <3.0.0"
   flutter: ">=3.3.0"

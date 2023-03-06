@@ -7,20 +7,20 @@ import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart
 import 'package:repo_search/features/github_repo/model/github_repo.dart';
 import 'package:repo_search/features/github_repo/ui/owner_image.dart';
 import 'package:repo_search/utils/build_context_extension.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-final watchersCountFutureProviderFamily =
-    FutureProvider.family.autoDispose<int, String>((
-  ref,
-  repositoryUrl,
-) async {
+part 'github_repo_detail_screen.g.dart';
+
+@riverpod
+Future<int> watchersCount(WatchersCountRef ref, String repositoryUrl) async {
   final result = await ref.watch(githubRepoRepositoryProvider).getWatchersCount(
         repositoryUrl: repositoryUrl,
       );
   // 成功時にキャッシュする
   ref.keepAlive();
   return result;
-});
+}
 
 class GithubRepoDetailScreen extends ConsumerWidget {
   final GithubRepo githubRepo;
@@ -30,8 +30,7 @@ class GithubRepoDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final updatedAtFormatter = DateFormat.yMMMd();
     final countFormat = NumberFormat.decimalPattern();
-    final watchersCountAsync =
-        ref.watch(watchersCountFutureProviderFamily(githubRepo.url));
+    final watchersCountAsync = ref.watch(watchersCountProvider(githubRepo.url));
 
     return Scaffold(
       appBar: AppBar(

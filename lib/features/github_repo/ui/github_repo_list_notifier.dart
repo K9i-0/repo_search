@@ -1,30 +1,25 @@
 import 'dart:async';
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart';
 import 'package:repo_search/features/github_repo/model/github_repo_list_state.dart';
 import 'package:repo_search/features/github_repo/ui/search_settings_notifier.dart';
 import 'package:repo_search/utils/async_value_extension.dart';
 import 'package:repo_search/utils/ref_extension.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final githubRepoListProviderFamily = AutoDisposeAsyncNotifierProviderFamily<
-    GithubRepoListNotifier, GithubRepoListState, String>(
-  () => GithubRepoListNotifier(),
-);
+part 'github_repo_list_notifier.g.dart';
 
-class GithubRepoListNotifier
-    extends AutoDisposeFamilyAsyncNotifier<GithubRepoListState, String> {
-  late String _searchKeywords;
-
+@Riverpod(dependencies: [githubRepoRepository])
+class GithubRepoList extends _$GithubRepoList {
   @override
-  FutureOr<GithubRepoListState> build(String arg) async {
-    _searchKeywords = arg;
+  Future<GithubRepoListState> build(String searchKeywords) async {
     final cancelToken = ref.cancelToken();
     // キー入力ごとに検索が実行されるのでDebounce処理を行う
     await ref.debounce();
 
     final result = await ref.watch(githubRepoRepositoryProvider).searchRepos(
-          searchKeywords: _searchKeywords,
+          searchKeywords: searchKeywords,
           // 検索条件が変わったらリビルドされる
           sort: ref.watch(searchSettingsProvider.select((value) => value.sort)),
           order:
@@ -65,7 +60,7 @@ class GithubRepoListNotifier
       () async {
         final cancelToken = ref.cancelToken();
         final next = await ref.read(githubRepoRepositoryProvider).searchRepos(
-              searchKeywords: _searchKeywords,
+              searchKeywords: searchKeywords,
               sort: ref.read(searchSettingsProvider).sort,
               order: ref.read(searchSettingsProvider).order,
               page: value.page + 1,
