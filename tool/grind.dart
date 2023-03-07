@@ -22,9 +22,9 @@ void b() {
   _runCommand(command: 'flutter pub run build_runner build -d');
 }
 
-@Task('flutter pub run build_runner watch')
+@Task('flutter pub run build_runner watch --delete-conflicting-outputs')
 void w() {
-  _runCommand(command: 'flutter pub run build_runner watch');
+  _runCommand(command: 'flutter pub run build_runner watch -d');
 }
 
 @Task('CocoaPodsのアップデート(パッケージアプデ時に使う)')
