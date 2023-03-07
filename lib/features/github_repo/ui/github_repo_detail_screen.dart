@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:repo_search/common/github_access_token.dart';
 import 'package:repo_search/features/github_repo/data/gihub_repo_repository.dart';
 import 'package:repo_search/features/github_repo/model/github_repo.dart';
 import 'package:repo_search/features/github_repo/ui/owner_image.dart';
@@ -12,7 +13,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 part 'github_repo_detail_screen.g.dart';
 
-@riverpod
+@Riverpod(dependencies: [githubRepoRepository])
 Future<int> watchersCount(WatchersCountRef ref, String repositoryUrl) async {
   final result = await ref.watch(githubRepoRepositoryProvider).getWatchersCount(
         repositoryUrl: repositoryUrl,

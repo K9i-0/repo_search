@@ -8,7 +8,7 @@ part of 'github_repo_detail_screen.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$watchersCountHash() => r'8b183726ce2f78c0b5bc0faf159ece01725b5e35';
+String _$watchersCountHash() => r'03ee96940d0141f776f5b385bceeabea06dabbff';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -60,12 +60,18 @@ class WatchersCountFamily extends Family<AsyncValue<int>> {
     );
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
+  static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
+    githubRepoRepositoryProvider
+  ];
 
   @override
   Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+  static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
+      <ProviderOrFamily>[
+    githubRepoRepositoryProvider,
+    githubAccessTokenProvider
+  ];
 
   @override
   Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
