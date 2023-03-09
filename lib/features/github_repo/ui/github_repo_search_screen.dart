@@ -31,7 +31,7 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
     useListenable(searchController);
     // 検索結果を監視して、エラーがあればスナックバーを表示する
     ref.listen(
-      githubRepoListProvider(searchController.text),
+      githubRepoListProviderFamily(searchController.text),
       (_, state) {
         state.showSnackbarOnError(
           context,
@@ -103,20 +103,21 @@ class GithubRepoSearchScreen extends HookConsumerWidget {
             if (searchController.text.isNotEmpty)
               Expanded(
                 child: ref
-                    .watch(githubRepoListProvider(searchController.text))
+                    .watch(githubRepoListProviderFamily(searchController.text))
                     .whenPlus(
                       data: (data, hasError) => RefreshIndicator(
                         onRefresh: () => ref.refresh(
-                          githubRepoListProvider(searchController.text).future,
+                          githubRepoListProviderFamily(searchController.text)
+                              .future,
                         ),
                         child: Content(
                           data: data,
                           // 次のページがあり、かつエラーがない場合に、最後の要素に達したことを検知するためのWidgetを表示する
                           showEndItem: data.hasMore && !hasError,
                           onScrollEnd: () => ref
-                              .read(
-                                  githubRepoListProvider(searchController.text)
-                                      .notifier)
+                              .read(githubRepoListProviderFamily(
+                                      searchController.text)
+                                  .notifier)
                               .loadNext(),
                         ),
                       ),

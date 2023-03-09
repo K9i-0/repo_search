@@ -35,7 +35,7 @@ typedef WatchersCountRef = AutoDisposeFutureProviderRef<int>;
 
 /// See also [watchersCount].
 @ProviderFor(watchersCount)
-const watchersCountProvider = WatchersCountFamily();
+const watchersCountProviderFamily = WatchersCountFamily();
 
 /// See also [watchersCount].
 class WatchersCountFamily extends Family<AsyncValue<int>> {
@@ -78,7 +78,7 @@ class WatchersCountFamily extends Family<AsyncValue<int>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'watchersCountProvider';
+  String? get name => r'watchersCountProviderFamily';
 }
 
 /// See also [watchersCount].
@@ -91,8 +91,8 @@ class WatchersCountProvider extends AutoDisposeFutureProvider<int> {
             ref,
             repositoryUrl,
           ),
-          from: watchersCountProvider,
-          name: r'watchersCountProvider',
+          from: watchersCountProviderFamily,
+          name: r'watchersCountProviderFamily',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null

@@ -11,3 +11,7 @@ targets:
           - implicit_dynamic_type
           - implicit_dynamic_method
           - strict_raw_type
+      riverpod_generator:
+        options:
+          # Family系のProviderの末尾をProviderFamilyにする
+          provider_family_name_suffix: "ProviderFamily"
