@@ -31,7 +31,8 @@ class GithubRepoDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final updatedAtFormatter = DateFormat.yMMMd();
     final countFormat = NumberFormat.decimalPattern();
-    final watchersCountAsync = ref.watch(watchersCountProvider(githubRepo.url));
+    final watchersCountAsync =
+        ref.watch(watchersCountProviderFamily(githubRepo.url));
 
     return Scaffold(
       appBar: AppBar(

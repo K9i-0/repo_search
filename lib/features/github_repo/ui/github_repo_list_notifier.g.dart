@@ -42,7 +42,7 @@ abstract class _$GithubRepoList
 
 /// See also [GithubRepoList].
 @ProviderFor(GithubRepoList)
-const githubRepoListProvider = GithubRepoListFamily();
+const githubRepoListProviderFamily = GithubRepoListFamily();
 
 /// See also [GithubRepoList].
 class GithubRepoListFamily extends Family<AsyncValue<GithubRepoListState>> {
@@ -85,7 +85,7 @@ class GithubRepoListFamily extends Family<AsyncValue<GithubRepoListState>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'githubRepoListProvider';
+  String? get name => r'githubRepoListProviderFamily';
 }
 
 /// See also [GithubRepoList].
@@ -96,8 +96,8 @@ class GithubRepoListProvider extends AutoDisposeAsyncNotifierProviderImpl<
     this.searchKeywords,
   ) : super.internal(
           () => GithubRepoList()..searchKeywords = searchKeywords,
-          from: githubRepoListProvider,
-          name: r'githubRepoListProvider',
+          from: githubRepoListProviderFamily,
+          name: r'githubRepoListProviderFamily',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null

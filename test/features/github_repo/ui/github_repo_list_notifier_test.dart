@@ -54,7 +54,7 @@ void main() {
     addTearDown(container.dispose);
     final listener = Listener();
     container.listen(
-      githubRepoListProvider('flutter'),
+      githubRepoListProviderFamily('flutter'),
       listener,
       fireImmediately: true,
     );
@@ -64,7 +64,7 @@ void main() {
       const AsyncValue.loading(),
     )).called(1);
 
-    await container.read(githubRepoListProvider('flutter').future);
+    await container.read(githubRepoListProviderFamily('flutter').future);
 
     verify(listener(
       const AsyncValue.loading(),
@@ -133,7 +133,7 @@ void main() {
     addTearDown(container.dispose);
     final listener = Listener();
     container.listen(
-      githubRepoListProvider('flutter'),
+      githubRepoListProviderFamily('flutter'),
       listener,
       fireImmediately: true,
     );
@@ -143,7 +143,7 @@ void main() {
       const AsyncValue.loading(),
     )).called(1);
 
-    await container.read(githubRepoListProvider('flutter').future);
+    await container.read(githubRepoListProviderFamily('flutter').future);
 
     verify(listener(
       const AsyncValue.loading(),
@@ -161,7 +161,8 @@ void main() {
       cancelToken: anyNamed('cancelToken'),
     )).called(1);
 
-    final notifier = container.read(githubRepoListProvider('flutter').notifier);
+    final notifier =
+        container.read(githubRepoListProviderFamily('flutter').notifier);
     await notifier.loadNext();
 
     verify(listener(
